@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Design System — Sais Beach Living Hotel</title>
+  <link rel="stylesheet" href="sais-tokens.css" />
+  <link rel="stylesheet" href="sais-guide.css" />
+</head>
+<body>
+<div class="sg-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sg-sidebar" id="sidebar">
+    <div class="sg-sidebar__brand">
+      <img class="sg-sidebar__logo"
+           src="imgs/LOGO + TAGLINE BRANCO.png"
+           alt="Sais Beach Living Hotel"
+           onerror="this.style.display='none'" />
+      <div class="sg-sidebar__subtitle">Design System · v1.0</div>
+    </div>
+    <nav class="sg-nav">
+      <div class="sg-nav__group-label">Fundamentos</div>
+      <a class="sg-nav__item" href="#cores"><span class="num">01</span>Cores</a>
+      <a class="sg-nav__item" href="#tipografia"><span class="num">02</span>Tipografia</a>
+      <a class="sg-nav__item" href="#espacamento"><span class="num">03</span>Espaçamento</a>
+      <a class="sg-nav__item" href="#sombras"><span class="num">04</span>Sombras & Bordas</a>
+      <a class="sg-nav__item" href="#motion"><span class="num">05</span>Motion</a>
+
+      <div class="sg-nav__group-label">Componentes</div>
+      <a class="sg-nav__item" href="#botoes"><span class="num">06</span>Botões</a>
+      <a class="sg-nav__item" href="#badges"><span class="num">07</span>Badges</a>
+      <a class="sg-nav__item" href="#cards"><span class="num">08</span>Cards</a>
+      <a class="sg-nav__item" href="#formularios"><span class="num">09</span>Formulários</a>
+      <a class="sg-nav__item" href="#accordion"><span class="num">10</span>Accordion</a>
+      <a class="sg-nav__item" href="#icones"><span class="num">11</span>Ícones</a>
+      <a class="sg-nav__item" href="#sticky"><span class="num">12</span>Sticky CTA</a>
+
+      <div class="sg-nav__group-label">Padrões</div>
+      <a class="sg-nav__item" href="#secoes"><span class="num">13</span>Seções Modelo</a>
+      <a class="sg-nav__item" href="#imagens"><span class="num">14</span>Imagens & Logo</a>
+      <a class="sg-nav__item" href="#checklist"><span class="num">15</span>Checklist</a>
+      <a class="sg-nav__item" href="#evitar"><span class="num">16</span>O que Evitar</a>
+      <a class="sg-nav__item" href="#acessibilidade"><span class="num">17</span>Acessibilidade</a>
+      <a class="sg-nav__item" href="#principios"><span class="num">18</span>Princípios</a>
+    </nav>
+  </aside>
+
+  <!-- MOBILE TOGGLE -->
+  <button class="sg-mobile-toggle" id="mobileToggle" aria-label="Abrir menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+
+  <!-- MAIN -->
+  <main class="sg-main">
+
+    <!-- HEADER -->
+    <header class="sg-header">
+      <div class="sg-header__badge">Design System</div>
+      <h1>Sais Beach Living Hotel<br><em>Identidade Visual</em></h1>
+      <p class="sg-header__desc">
+        Referência visual oficial da marca. Ponta Verde · Maceió, Alagoas. Use este guia para garantir consistência em todos os pontos de contato — digital, impresso e comunicação.
+      </p>
+      <div class="sg-header__meta">
+        <div class="sg-header__meta-item"><strong>Versão</strong>1.0.0</div>
+        <div class="sg-header__meta-item"><strong>Tipografia</strong>Domaine Sans Text (texto) · Domaine Display (números)</div>
+        <div class="sg-header__meta-item"><strong>Cor primária</strong>#8B7240 Gold</div>
+        <div class="sg-header__meta-item"><strong>Status</strong>Ativo</div>
+      </div>
+    </header>
+
+    <!-- ── 01 CORES ───────────────────────────────────── -->
+    <section class="sg-section" id="cores">
+      <div class="sg-section__header">
+        <span class="sg-section__num">01</span>
+        <h2 class="sg-section__title">Paleta de Cores</h2>
+        <p class="sg-section__desc">Cores derivadas do ambiente de praia e natureza alagoana — areia, ouro, terra e mar. Paleta quente e sofisticada com profundidade escura.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Cores primárias</h3>
+        <div class="sg-color-grid">
+          <div class="sg-color-card">
+            <div class="sg-color-swatch" style="background:#8B7240"></div>
+            <div class="sg-color-info">
+              <span class="sg-color-name">Gold</span>
+              <span class="sg-color-hex">--sais-gold · #8B7240</span>
+              <span class="sg-color-role">CTA, destaques, logotipo dourado</span>
+            </div>
+          </div>
+          <div class="sg-color-card">
+            <div class="sg-color-swatch" style="background:#2B1A0D"></div>
+            <div class="sg-color-info">
+              <span class="sg-color-name">Dark</span>
+              <span class="sg-color-hex">--sais-dark · #2B1A0D</span>
+              <span class="sg-color-role">Fundo principal, sidebar, hero</span>
+            </div>
+          </div>
+          <div class="sg-color-card">
+            <div class="sg-color-swatch" style="background:#EBE3CF"></div>
+            <div class="sg-color-info">
+              <span class="sg-color-name">Areia</span>
+              <span class="sg-color-hex">--sais-areia · #EBE3CF</span>
+              <span class="sg-color-role">Textos sobre escuro, fundos claros</span>
+            </div>
+          </div>
+          <div class="sg-color-card">
+            <div class="sg-color-swatch" style="background:#F5F0E4"></div>
+            <div class="sg-color-info">
+              <span class="sg-color-name">Cream</span>
+              <span class="sg-color-hex">--sais-cream · #F5F0E4</span>
+              <span class="sg-color-role">Fundos muito claros, áreas de respiro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Escala Gold</h3>
+        <div class="sg-color-row">
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#D5C99A"></div>
+            <div class="sg-color-chip__label">200 · #D5C99A</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#CFC19A"></div>
+            <div class="sg-color-chip__label">divider · #CFC19A</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#8B7240"></div>
+            <div class="sg-color-chip__label">base · #8B7240</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#6A5530"></div>
+            <div class="sg-color-chip__label">deep · #6A5530</div>
+          </div>
+        </div>
+
+        <h3 class="sg-subsection__title">Escala Dark</h3>
+        <div class="sg-color-row">
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#6B4E2E"></div>
+            <div class="sg-color-chip__label">mid · #6B4E2E</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#4E3320"></div>
+            <div class="sg-color-chip__label">600 · #4E3320</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#3A1F0E"></div>
+            <div class="sg-color-chip__label">800 · #3A1F0E</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#2B1A0D"></div>
+            <div class="sg-color-chip__label">base · #2B1A0D</div>
+          </div>
+        </div>
+
+        <h3 class="sg-subsection__title">Escala Areia</h3>
+        <div class="sg-color-row">
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#FAF7F2;border:1px solid #ddd"></div>
+            <div class="sg-color-chip__label">50 · #FAF7F2</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#F5F0E4"></div>
+            <div class="sg-color-chip__label">cream · #F5F0E4</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#EBE3CF"></div>
+            <div class="sg-color-chip__label">base · #EBE3CF</div>
+          </div>
+          <div class="sg-color-chip">
+            <div class="sg-color-chip__swatch" style="background:#D9CEAF"></div>
+            <div class="sg-color-chip__label">300 · #D9CEAF</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Tokens — referência completa</h3>
+        <table class="sg-token-table">
+          <thead>
+            <tr><th>Token</th><th>Valor</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="sg-token-name">--sais-gold</span></td><td class="sg-token-value">#8B7240</td><td>CTAs, destaques, logotipo dourado</td></tr>
+            <tr><td><span class="sg-token-name">--sais-gold-deep</span></td><td class="sg-token-value">#6A5530</td><td>Hover do gold, estados ativos</td></tr>
+            <tr><td><span class="sg-token-name">--sais-divider</span></td><td class="sg-token-value">#CFC19A</td><td>Linhas divisórias, bordas suaves</td></tr>
+            <tr><td><span class="sg-token-name">--sais-areia</span></td><td class="sg-token-value">#EBE3CF</td><td>Textos sobre escuro, fundos</td></tr>
+            <tr><td><span class="sg-token-name">--sais-cream</span></td><td class="sg-token-value">#F5F0E4</td><td>Fundos muito claros</td></tr>
+            <tr><td><span class="sg-token-name">--sais-dark</span></td><td class="sg-token-value">#2B1A0D</td><td>Fundo principal, sidebar</td></tr>
+            <tr><td><span class="sg-token-name">--sais-dark-800</span></td><td class="sg-token-value">#3A1F0E</td><td>Seções alternadas escuras</td></tr>
+            <tr><td><span class="sg-token-name">--sais-mid</span></td><td class="sg-token-value">#6B4E2E</td><td>Texto corpo, tons intermediários</td></tr>
+            <tr><td><span class="sg-token-name">--sais-branco</span></td><td class="sg-token-value">#FAFAF8</td><td>Texto puro sobre escuro</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── 02 TIPOGRAFIA ──────────────────────────────── -->
+    <section class="sg-section" id="tipografia">
+      <div class="sg-section__header">
+        <span class="sg-section__num">02</span>
+        <h2 class="sg-section__title">Tipografia</h2>
+        <p class="sg-section__desc">Domaine Sans Text Regular e Italic — para todos os textos. Domaine Display — exclusivamente para numerais e tarifas. Hierarquia por peso e tamanho, não por família.</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">H1 — Título <span>Domaine Sans Text Regular · clamp(2.25rem → 3.75rem)</span></div>
+        <p class="sg-type-h1">Viva o melhor<br>do litoral alagoano</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">H2 — Seção <span>Domaine Sans Text Regular · clamp(1.625rem → 2.5rem)</span></div>
+        <p class="sg-type-h2">Uma experiência à beira-mar em Ponta Verde</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">H3 — Subseção <span>Domaine Sans Text Regular · clamp(1.25rem → 1.75rem) · letter-spacing +0.01em</span></div>
+        <p class="sg-type-h3">Quartos com vista para o mar, conforto e design</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">Sub — Linha de apoio <span>Domaine Sans Text Regular · clamp(1rem → 1.25rem)</span></div>
+        <p class="sg-type-sub">Uma hospedagem pensada para quem busca o equilíbrio entre luxo e autenticidade</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">Body — Corpo <span>Domaine Sans Text Regular · 1rem</span></div>
+        <p class="sg-type-body">O Sais Beach Living Hotel nasceu da vontade de oferecer uma experiência genuína no litoral de Maceió. Cada detalhe — da arquitetura ao serviço — foi pensado para que o hóspede se sinta em casa, com toda a sofisticação que o destino merece.</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">Caption <span>Domaine Sans Text Regular · 0.875rem</span></div>
+        <p class="sg-type-caption">Check-in a partir das 14h · Check-out até as 12h · Ponta Verde, Maceió</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">Micro <span>Domaine Sans Text Regular · 0.75rem · tracking +0.08em</span></div>
+        <p class="sg-type-micro">Ponta Verde · Maceió · Alagoas</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">Button <span>Domaine Sans Text Medium · 0.8125rem · uppercase · tracking +0.12em</span></div>
+        <p class="sg-type-button">Reservar agora</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">Badge <span>Domaine Sans Text Medium · 0.6875rem · uppercase · tracking +0.14em</span></div>
+        <p class="sg-type-badge">Temporada Alta</p>
+      </div>
+
+      <div class="sg-type-sample">
+        <div class="sg-type-sample__label">Quote <span>Domaine Sans Text Italic · clamp(1.125rem → 1.5rem)</span></div>
+        <blockquote class="sg-type-quote">"O mar de Alagoas tem uma luz que não existe em nenhum outro lugar do mundo. O Sais captura isso em cada detalhe."</blockquote>
+      </div>
+
+      <div class="sg-type-sample" style="border-color:rgba(139,114,64,0.25)">
+        <div class="sg-type-sample__label">Domaine Display — <em style="font-style:normal;color:var(--sais-gold)">numerais e tarifas apenas</em> <span>Domaine Display · números, preços, métricas</span></div>
+        <div style="display:flex;align-items:baseline;gap:var(--sais-space-8);flex-wrap:wrap">
+          <span style="font-family:var(--sais-font-display);font-size:clamp(2.5rem,5vw,4rem);color:var(--sais-gold);font-weight:400;line-height:1">R$ 890</span>
+          <span style="font-family:var(--sais-font-display);font-size:clamp(2rem,4vw,3rem);color:var(--sais-areia);font-weight:400;line-height:1">12</span>
+          <span style="font-family:var(--sais-font-display);font-size:clamp(2rem,4vw,3rem);color:var(--sais-areia);font-weight:400;line-height:1">100%</span>
+          <span style="font-family:var(--sais-font-display);font-size:clamp(2rem,4vw,3rem);color:rgba(207,193,154,.6);font-weight:400;line-height:1">4★</span>
+        </div>
+        <p style="margin-top:var(--sais-space-3);font-size:var(--sais-text-micro);color:rgba(250,250,248,.28)">Uso: feature cards, hero prices, métricas de destaque — nunca em parágrafos ou títulos textuais.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Tokens de tipografia</h3>
+        <table class="sg-token-table">
+          <thead><tr><th>Token</th><th>Valor</th></tr></thead>
+          <tbody>
+            <tr><td><span class="sg-token-name">--sais-font-display</span></td><td class="sg-token-value">'Domaine Display' — <em style="color:var(--sais-gold);font-size:0.75rem">numerais e tarifas apenas</em></td></tr>
+            <tr><td><span class="sg-token-name">--sais-font-body</span></td><td class="sg-token-value">'Domaine Sans Text' — <em style="color:rgba(207,193,154,.6);font-size:0.75rem">todo o restante · Regular ou Italic</em></td></tr>
+            <tr><td><span class="sg-token-name">--sais-text-h1</span></td><td class="sg-token-value">clamp(2.25rem, 5vw, 3.75rem)</td></tr>
+            <tr><td><span class="sg-token-name">--sais-text-h2</span></td><td class="sg-token-value">clamp(1.625rem, 3.5vw, 2.5rem)</td></tr>
+            <tr><td><span class="sg-token-name">--sais-text-h3</span></td><td class="sg-token-value">clamp(1.25rem, 2.5vw, 1.75rem)</td></tr>
+            <tr><td><span class="sg-token-name">--sais-weight-light</span></td><td class="sg-token-value">300</td></tr>
+            <tr><td><span class="sg-token-name">--sais-weight-regular</span></td><td class="sg-token-value">400</td></tr>
+            <tr><td><span class="sg-token-name">--sais-weight-medium</span></td><td class="sg-token-value">500</td></tr>
+            <tr><td><span class="sg-token-name">--sais-weight-bold</span></td><td class="sg-token-value">700</td></tr>
+            <tr><td><span class="sg-token-name">--sais-weight-black</span></td><td class="sg-token-value">900</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── 03 ESPAÇAMENTO ─────────────────────────────── -->
+    <section class="sg-section" id="espacamento">
+      <div class="sg-section__header">
+        <span class="sg-section__num">03</span>
+        <h2 class="sg-section__title">Espaçamento & Grid</h2>
+        <p class="sg-section__desc">Escala em base-4. Container máximo de 1200px com 12 colunas em desktop, 8 em tablet, 4 em mobile.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Escala de espaçamento</h3>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:4px"></div><span class="sg-spacing-label">--sais-space-1</span><span class="sg-spacing-value">0.25rem · 4px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:8px"></div><span class="sg-spacing-label">--sais-space-2</span><span class="sg-spacing-value">0.5rem · 8px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:12px"></div><span class="sg-spacing-label">--sais-space-3</span><span class="sg-spacing-value">0.75rem · 12px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:16px"></div><span class="sg-spacing-label">--sais-space-4</span><span class="sg-spacing-value">1rem · 16px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:24px"></div><span class="sg-spacing-label">--sais-space-6</span><span class="sg-spacing-value">1.5rem · 24px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:32px"></div><span class="sg-spacing-label">--sais-space-8</span><span class="sg-spacing-value">2rem · 32px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:48px"></div><span class="sg-spacing-label">--sais-space-12</span><span class="sg-spacing-value">3rem · 48px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:64px"></div><span class="sg-spacing-label">--sais-space-16</span><span class="sg-spacing-value">4rem · 64px</span></div>
+        <div class="sg-spacing-row"><div class="sg-spacing-bar" style="width:80px"></div><span class="sg-spacing-label">--sais-space-20</span><span class="sg-spacing-value">5rem · 80px</span></div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Grid de 12 colunas (desktop)</h3>
+        <div class="sg-grid-demo">
+          <div class="sg-grid-col"></div><div class="sg-grid-col"></div><div class="sg-grid-col"></div>
+          <div class="sg-grid-col"></div><div class="sg-grid-col"></div><div class="sg-grid-col"></div>
+          <div class="sg-grid-col"></div><div class="sg-grid-col"></div><div class="sg-grid-col"></div>
+          <div class="sg-grid-col"></div><div class="sg-grid-col"></div><div class="sg-grid-col"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sais-space-3);margin-bottom:var(--sais-space-3)">
+          <div style="grid-column:span 8;background:rgba(139,114,64,0.18);height:24px;display:flex;align-items:center;justify-content:center;font-size:.625rem;color:var(--sais-areia)">8 col</div>
+          <div style="grid-column:span 4;background:rgba(139,114,64,0.32);height:24px;display:flex;align-items:center;justify-content:center;font-size:.625rem;color:var(--sais-areia)">4 col</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sais-space-3)">
+          <div style="grid-column:span 4;background:rgba(139,114,64,0.18);height:24px;display:flex;align-items:center;justify-content:center;font-size:.625rem;color:var(--sais-areia)">4 col</div>
+          <div style="grid-column:span 4;background:rgba(139,114,64,0.18);height:24px;display:flex;align-items:center;justify-content:center;font-size:.625rem;color:var(--sais-areia)">4 col</div>
+          <div style="grid-column:span 4;background:rgba(139,114,64,0.18);height:24px;display:flex;align-items:center;justify-content:center;font-size:.625rem;color:var(--sais-areia)">4 col</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 04 SOMBRAS & BORDAS ────────────────────────── -->
+    <section class="sg-section" id="sombras">
+      <div class="sg-section__header">
+        <span class="sg-section__num">04</span>
+        <h2 class="sg-section__title">Sombras & Bordas</h2>
+        <p class="sg-section__desc">Sombras baseadas na cor escura do sistema — nunca preto puro. Bordas sempre 0 de radius para manter a estética retilínea da marca.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Sombras</h3>
+        <div class="sg-shadow-grid">
+          <div class="sg-shadow-card" style="box-shadow:var(--sais-shadow-subtle)">
+            <div class="sg-shadow-label">--sais-shadow-subtle</div>
+          </div>
+          <div class="sg-shadow-card" style="box-shadow:var(--sais-shadow-card)">
+            <div class="sg-shadow-label">--sais-shadow-card</div>
+          </div>
+          <div class="sg-shadow-card" style="box-shadow:var(--sais-shadow-elevated)">
+            <div class="sg-shadow-label">--sais-shadow-elevated</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Border Radius</h3>
+        <div class="sg-radius-row">
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:0"></div>
+            <span class="sg-radius-name">--sais-radius-none<br>0 (padrão)</span>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:2px"></div>
+            <span class="sg-radius-name">--sais-radius-xs<br>2px</span>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:4px"></div>
+            <span class="sg-radius-name">--sais-radius-sm<br>4px</span>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:8px"></div>
+            <span class="sg-radius-name">--sais-radius-md<br>8px</span>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:9999px;width:80px;height:40px"></div>
+            <span class="sg-radius-name">--sais-radius-full<br>pill</span>
+          </div>
+        </div>
+        <p style="margin-top:var(--sais-space-4);font-size:var(--sais-text-micro);color:rgba(250,250,248,.3)">
+          ⚠ Botões, cards e inputs da marca usam <strong style="color:rgba(250,250,248,.5)">border-radius: 0</strong> — estética retilínea e arquitetônica.
+        </p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Bordas</h3>
+        <table class="sg-token-table">
+          <thead><tr><th>Token</th><th>Valor</th></tr></thead>
+          <tbody>
+            <tr><td><span class="sg-token-name">--sais-border</span></td><td class="sg-token-value">1px solid rgba(139,114,64,0.15)</td></tr>
+            <tr><td><span class="sg-token-name">--sais-border-medium</span></td><td class="sg-token-value">1px solid rgba(139,114,64,0.28)</td></tr>
+            <tr><td><span class="sg-token-name">--sais-border-gold</span></td><td class="sg-token-value">1px solid rgba(207,193,154,0.45)</td></tr>
+            <tr><td><span class="sg-token-name">--sais-border-focus</span></td><td class="sg-token-value">2px solid var(--sais-gold)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── 05 MOTION ──────────────────────────────────── -->
+    <section class="sg-section" id="motion">
+      <div class="sg-section__header">
+        <span class="sg-section__num">05</span>
+        <h2 class="sg-section__title">Motion</h2>
+        <p class="sg-section__desc">Transições intencionais — rápidas para feedback imediato, lentas para entradas de conteúdo. O movimento reforça a calma e sofisticação da marca.</p>
+      </div>
+
+      <div class="sg-motion-grid">
+        <div class="sg-motion-item">
+          <div class="sg-motion-item__label">Fast</div>
+          <div class="sg-motion-item__value">--sais-transition-fast</div>
+          <div class="sg-motion-item__desc">150ms ease — feedback imediato: hover, foco, toggle</div>
+          <div class="sg-motion-demo"></div>
+        </div>
+        <div class="sg-motion-item">
+          <div class="sg-motion-item__label">Base</div>
+          <div class="sg-motion-item__value">--sais-transition-base</div>
+          <div class="sg-motion-item__desc">250ms ease — transições padrão de componentes</div>
+          <div class="sg-motion-demo"></div>
+        </div>
+        <div class="sg-motion-item">
+          <div class="sg-motion-item__label">Slow</div>
+          <div class="sg-motion-item__value">--sais-transition-slow</div>
+          <div class="sg-motion-item__desc">400ms cubic-bezier — entradas, accordion, overlays</div>
+          <div class="sg-motion-demo"></div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Parallax — Profundidade suave ao rolar</h3>
+        <div class="sg-parallax-demo" id="sg-parallax-demo">
+          <div class="sg-parallax-demo__bg" id="sg-parallax-bg"></div>
+          <div class="sg-parallax-demo__content">
+            <p class="sg-parallax-demo__label">Parallax scroll · role a página para sentir o efeito</p>
+            <p class="sg-parallax-demo__headline">Viva o melhor<br><em>do litoral alagoano</em></p>
+          </div>
+        </div>
+        <p style="font-size:var(--sais-text-micro);color:rgba(250,250,248,.3);margin-top:var(--sais-space-3)">
+          Use <code style="color:var(--sais-gold);font-size:0.75rem">.sais-parallax</code> + <code style="color:var(--sais-gold);font-size:0.75rem">.sais-parallax__bg</code>.
+          Desloca o fundo em ~18% do offset de scroll. Sempre com <code style="color:var(--sais-gold);font-size:0.75rem">will-change: transform</code>.
+        </p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Animate In — Entrada gradual ao rolar</h3>
+        <div class="sg-animate-demo">
+          <div class="sg-animate-box sais-animate-in" data-animate>
+            <div class="sg-animate-box__label">sais-animate-in</div>
+            <div class="sg-animate-box__code">fade-up · 0.7s · sem delay</div>
+          </div>
+          <div class="sg-animate-box sais-animate-in sais-animate-in--delay-1" data-animate>
+            <div class="sg-animate-box__label">delay-1</div>
+            <div class="sg-animate-box__code">delay: 0.1s</div>
+          </div>
+          <div class="sg-animate-box sais-animate-in sais-animate-in--delay-2" data-animate>
+            <div class="sg-animate-box__label">delay-2</div>
+            <div class="sg-animate-box__code">delay: 0.25s</div>
+          </div>
+          <div class="sg-animate-box sais-animate-in sais-animate-in--delay-3" data-animate>
+            <div class="sg-animate-box__label">delay-3</div>
+            <div class="sg-animate-box__code">delay: 0.4s</div>
+          </div>
+          <div class="sg-animate-box sais-animate-fade" data-animate>
+            <div class="sg-animate-box__label">sais-animate-fade</div>
+            <div class="sg-animate-box__code">fade only · 0.9s</div>
+          </div>
+        </div>
+        <p style="font-size:var(--sais-text-micro);color:rgba(250,250,248,.3);margin-top:var(--sais-space-3)">
+          Adicione <code style="color:var(--sais-gold);font-size:0.75rem">data-animate</code> ao elemento.
+          O JS adiciona <code style="color:var(--sais-gold);font-size:0.75rem">.is-visible</code> via IntersectionObserver quando entra na viewport.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 06 BOTÕES ──────────────────────────────────── -->
+    <section class="sg-section" id="botoes">
+      <div class="sg-section__header">
+        <span class="sg-section__num">06</span>
+        <h2 class="sg-section__title">Botões</h2>
+        <p class="sg-section__desc">Hierarquia de ação clara: CTA dourado para conversão principal, areia para destaque secundário, outline para ações terciárias.</p>
+      </div>
+
+      <div class="sg-btn-row">
+        <div class="sg-btn-row__label">Fundos escuros (uso principal)</div>
+        <button class="sais-btn sais-btn--cta">Reservar agora</button>
+        <button class="sais-btn sais-btn--primary">Ver disponibilidade</button>
+        <button class="sais-btn sais-btn--outline">Saiba mais</button>
+        <button class="sais-btn sais-btn--ghost">Ver mais</button>
+        <button class="sais-btn sais-btn--cta" disabled>Indisponível</button>
+      </div>
+
+      <div class="sg-btn-row" style="background:var(--sais-cream)">
+        <div class="sg-btn-row__label" style="color:rgba(43,26,13,0.4)">Fundos claros</div>
+        <button class="sais-btn sais-btn--gold">Reservar agora</button>
+        <button class="sais-btn sais-btn--outline-gold">Ver cardápio</button>
+        <button class="sais-btn sais-btn--whatsapp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </button>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Microcopy de conversão</h3>
+        <div style="display:inline-block">
+          <button class="sais-btn sais-btn--cta">Garantir minha reserva</button>
+          <span class="sais-btn-microcopy">Sem taxa de reserva · Cancelamento gratuito até 48h</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 07 BADGES ──────────────────────────────────── -->
+    <section class="sg-section" id="badges">
+      <div class="sg-section__header">
+        <span class="sg-section__num">07</span>
+        <h2 class="sg-section__title">Badges</h2>
+        <p class="sg-section__desc">Indicadores contextuais — usados com moderação para sinalizar categorias, status e atributos especiais.</p>
+      </div>
+
+      <div class="sg-badge-grid">
+        <span class="sais-badge sais-badge--authority">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          Vista para o Mar
+        </span>
+        <span class="sais-badge sais-badge--info">Temporada Alta</span>
+        <span class="sais-badge sais-badge--location">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ponta Verde · Maceió
+        </span>
+        <span class="sais-badge sais-badge--capacity">12 suítes</span>
+        <span class="sais-badge sais-badge--required">Reserva Obrigatória</span>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Tokens de badges</h3>
+        <table class="sg-token-table">
+          <thead><tr><th>Classe</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><span class="sg-token-name">.sais-badge--authority</span></td><td>Gold · diferenciais premium, prêmios, destaques</td></tr>
+            <tr><td><span class="sg-token-name">.sais-badge--info</span></td><td>Areia · informação temporal, datas, condições</td></tr>
+            <tr><td><span class="sg-token-name">.sais-badge--location</span></td><td>Areia suave · localização, geolocalização</td></tr>
+            <tr><td><span class="sg-token-name">.sais-badge--capacity</span></td><td>Divider · capacidade, disponibilidade</td></tr>
+            <tr><td><span class="sg-token-name">.sais-badge--required</span></td><td>Dark · obrigatoriedade, avisos</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── 08 CARDS ───────────────────────────────────── -->
+    <section class="sg-section" id="cards">
+      <div class="sg-section__header">
+        <span class="sg-section__num">08</span>
+        <h2 class="sg-section__title">Cards</h2>
+        <p class="sg-section__desc">Quatro tipos de card para contextos distintos: quarto, feature numérica, prova social e informação prática.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Card de Acomodação</h3>
+        <div class="sg-cards-grid">
+          <div class="sais-room-card">
+            <div class="sais-room-card__img"><div class="sais-room-card__img-placeholder">Foto do quarto</div></div>
+            <div class="sais-room-card__body">
+              <h3 class="sais-room-card__name">Suíte Beira-Mar</h3>
+              <p class="sais-room-card__desc">Vista panorâmica para o mar, varanda privativa, cama king size e banheira de imersão.</p>
+              <span class="sais-room-card__rate">A partir de R$ 890 / noite</span>
+            </div>
+          </div>
+          <div class="sais-room-card">
+            <div class="sais-room-card__img"><div class="sais-room-card__img-placeholder">Foto do quarto</div></div>
+            <div class="sais-room-card__body">
+              <h3 class="sais-room-card__name">Suíte Garden</h3>
+              <p class="sais-room-card__desc">Jardim privativo, ducha ao ar livre, climatização silenciosa e decoração contemporânea.</p>
+              <span class="sais-room-card__rate">A partir de R$ 690 / noite</span>
+            </div>
+          </div>
+          <div class="sais-room-card">
+            <div class="sais-room-card__img"><div class="sais-room-card__img-placeholder">Foto do quarto</div></div>
+            <div class="sais-room-card__body">
+              <h3 class="sais-room-card__name">Quarto Deluxe</h3>
+              <p class="sais-room-card__desc">Conforto elegante com vista parcial para o mar, cama queen e varanda compartilhada.</p>
+              <span class="sais-room-card__rate">A partir de R$ 490 / noite</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Feature Card</h3>
+        <div class="sg-cards-grid">
+          <div class="sais-feature-card">
+            <div class="sais-feature-card__num">12</div>
+            <div class="sais-feature-card__title">Suítes Exclusivas</div>
+            <div class="sais-feature-card__desc">Experiência íntima e personalizada, sem superlotação.</div>
+          </div>
+          <div class="sais-feature-card">
+            <div class="sais-feature-card__num">4★</div>
+            <div class="sais-feature-card__title">Classificação Superior</div>
+            <div class="sais-feature-card__desc">Padrão internacional de serviço e infraestrutura.</div>
+          </div>
+          <div class="sais-feature-card">
+            <div class="sais-feature-card__num">100%</div>
+            <div class="sais-feature-card__title">Vista para o Mar</div>
+            <div class="sais-feature-card__desc">Todas as acomodações com acesso visual ao oceano.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Prova Social</h3>
+        <div class="sg-cards-grid">
+          <div class="sais-proof-card">
+            <p class="sais-proof-card__text">Uma das hospedagens mais memoráveis que já tive em Alagoas. O ambiente, a atenção e a localização são simplesmente impecáveis.</p>
+            <div class="sais-proof-card__author">Carolina M. · Google Reviews</div>
+          </div>
+          <div class="sais-proof-card">
+            <p class="sais-proof-card__text">O Sais tem tudo que buscamos — privacidade, conforto e aquele ar sofisticado sem ser pretensioso. Voltamos todo ano.</p>
+            <div class="sais-proof-card__author">Rafael & Juliana · TripAdvisor</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Info Card</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sais-space-4)">
+          <div class="sais-info-card">
+            <svg class="sais-info-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <div>
+              <div class="sais-info-card__title">Check-in / Check-out</div>
+              <div class="sais-info-card__value">14h → 12h · Recepção 24h</div>
+            </div>
+          </div>
+          <div class="sais-info-card">
+            <svg class="sais-info-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div class="sais-info-card__title">Localização</div>
+              <div class="sais-info-card__value">Ponta Verde · Maceió, Alagoas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 09 FORMULÁRIOS ─────────────────────────────── -->
+    <section class="sg-section" id="formularios">
+      <div class="sg-section__header">
+        <span class="sg-section__num">09</span>
+        <h2 class="sg-section__title">Formulários</h2>
+        <p class="sg-section__desc">Inputs com estados claros: padrão, foco (gold), erro (vermelho) e sucesso (verde). Sempre fundo escuro translúcido.</p>
+      </div>
+
+      <div style="max-width:600px">
+        <div class="sg-form-grid">
+          <div class="sais-field">
+            <label class="sais-label">Nome <span class="required">*</span></label>
+            <input class="sais-input" type="text" placeholder="Seu nome completo" />
+          </div>
+          <div class="sais-field">
+            <label class="sais-label">WhatsApp <span class="required">*</span></label>
+            <input class="sais-input" type="tel" placeholder="(82) 9 0000-0000" />
+          </div>
+          <div class="sais-field">
+            <label class="sais-label">E-mail</label>
+            <input class="sais-input sais-input--error" type="email" placeholder="seu@email.com" value="email-invalido" />
+            <span class="sais-field-message sais-field-message--error">Informe um e-mail válido</span>
+          </div>
+          <div class="sais-field">
+            <label class="sais-label">Data de entrada</label>
+            <input class="sais-input sais-input--success" type="date" value="2025-07-11" />
+            <span class="sais-field-message sais-field-message--success">Data disponível!</span>
+          </div>
+          <div class="sais-field">
+            <label class="sais-label">Tipo de acomodação</label>
+            <select class="sais-select">
+              <option value="">Selecione</option>
+              <option>Quarto Deluxe</option>
+              <option selected>Suíte Garden</option>
+              <option>Suíte Beira-Mar</option>
+            </select>
+          </div>
+          <div class="sais-field">
+            <label class="sais-label">Hóspedes</label>
+            <select class="sais-select">
+              <option>1 hóspede</option>
+              <option selected>2 hóspedes</option>
+              <option>3 hóspedes</option>
+            </select>
+          </div>
+          <div class="sais-field sais-field--full">
+            <label class="sais-label">Observações</label>
+            <textarea class="sais-textarea" placeholder="Restrições alimentares, pedidos especiais, ocasião..."></textarea>
+            <span class="sais-field-message sais-field-message--hint">Máximo 300 caracteres</span>
+          </div>
+        </div>
+        <div style="margin-top:var(--sais-space-6)">
+          <button class="sais-btn sais-btn--cta" style="width:100%">Solicitar Reserva</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 10 ACCORDION ───────────────────────────────── -->
+    <section class="sg-section" id="accordion">
+      <div class="sg-section__header">
+        <span class="sg-section__num">10</span>
+        <h2 class="sg-section__title">Accordion</h2>
+        <p class="sg-section__desc">Usado para FAQs, políticas e informações de serviços. Um item abre por vez — transição suave com cubic-bezier.</p>
+      </div>
+
+      <div style="max-width:680px">
+        <div class="sais-accordion" id="faq">
+          <div class="sais-accordion-item is-open">
+            <button class="sais-accordion-trigger">
+              <span class="sais-accordion-trigger__label">Qual a política de cancelamento?</span>
+              <svg class="sais-accordion-trigger__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <div class="sais-accordion-body">
+              <div class="sais-accordion-body__inner">
+                Cancelamentos com mais de 48h de antecedência são gratuitos. Cancelamentos com menos de 48h estão sujeitos a cobrança de uma diária. Não-comparecimento implica cobrança total da reserva.
+              </div>
+            </div>
+          </div>
+          <div class="sais-accordion-item">
+            <button class="sais-accordion-trigger">
+              <span class="sais-accordion-trigger__label">O hotel aceita pets?</span>
+              <svg class="sais-accordion-trigger__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <div class="sais-accordion-body">
+              <div class="sais-accordion-body__inner">
+                Aceitamos pets de pequeno porte (até 10kg) mediante taxa adicional de R$80/noite. É necessário informar na reserva. Os animais não têm acesso às áreas de piscina e restaurante.
+              </div>
+            </div>
+          </div>
+          <div class="sais-accordion-item">
+            <button class="sais-accordion-trigger">
+              <span class="sais-accordion-trigger__label">Há estacionamento disponível?</span>
+              <svg class="sais-accordion-trigger__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <div class="sais-accordion-body">
+              <div class="sais-accordion-body__inner">
+                Sim. Oferecemos estacionamento privativo coberto com manobrista, incluso nas diárias das Suítes. Para o Quarto Deluxe, o serviço está disponível por R$40/dia.
+              </div>
+            </div>
+          </div>
+          <div class="sais-accordion-item">
+            <button class="sais-accordion-trigger">
+              <span class="sais-accordion-trigger__label">O café da manhã está incluído?</span>
+              <svg class="sais-accordion-trigger__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <div class="sais-accordion-body">
+              <div class="sais-accordion-body__inner">
+                O café da manhã está incluído para todos os tipos de acomodação. Servimos das 7h às 11h com opções regionais, frutas tropicais, tapioca artesanal e sucos naturais.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 11 ÍCONES ──────────────────────────────────── -->
+    <section class="sg-section" id="icones">
+      <div class="sg-section__header">
+        <span class="sg-section__num">11</span>
+        <h2 class="sg-section__title">Ícones</h2>
+        <p class="sg-section__desc">Biblioteca: Lucide Icons. Estilo: stroke, stroke-width 1.5, sem fill. Tamanho base: 20×20px. Cor padrão: herda do contexto.</p>
+      </div>
+
+      <div class="sg-icon-grid">
+        <!-- Amenidades hotel -->
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="sg-icon-item__name">map-pin</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="sg-icon-item__name">calendar</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.77 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.72 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l.87-.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="sg-icon-item__name">phone</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="sg-icon-item__name">mail</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg><span class="sg-icon-item__name">clock</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="sg-icon-item__name">heart</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span class="sg-icon-item__name">star</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="sg-icon-item__name">users</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20,6 9,17 4,12"/></svg><span class="sg-icon-item__name">check</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span class="sg-icon-item__name">info</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,18 15,12 9,6"/></svg><span class="sg-icon-item__name">chevron-right</span></div>
+        <div class="sg-icon-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="sg-icon-item__name">shield</span></div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Tamanhos</h3>
+        <div class="sg-icon-sizes">
+          <div class="sg-icon-size-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <span>16px — badge</span>
+          </div>
+          <div class="sg-icon-size-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <span>20px — padrão</span>
+          </div>
+          <div class="sg-icon-size-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <span>24px — destaque</span>
+          </div>
+          <div class="sg-icon-size-item">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <span>32px — card</span>
+          </div>
+          <div class="sg-icon-size-item">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <span>48px — hero</span>
+          </div>
+        </div>
+        <p style="margin-top:var(--sais-space-3);font-size:var(--sais-text-micro);color:rgba(250,250,248,.3)">
+          Biblioteca: <strong style="color:rgba(207,193,154,.5)">Lucide Icons</strong> · stroke-width sempre 1.5 · nunca fill · cor herda do elemento pai
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 12 STICKY CTA ──────────────────────────────── -->
+    <section class="sg-section" id="sticky">
+      <div class="sg-section__header">
+        <span class="sg-section__num">12</span>
+        <h2 class="sg-section__title">Sticky CTA</h2>
+        <p class="sg-section__desc">Barra fixa de conversão — aparece após rolar 40% da página. Contém preço, resumo e botão principal. Z-index var(--sais-z-sticky).</p>
+      </div>
+
+      <div class="sg-sticky-demo">
+        <div style="padding:var(--sais-space-8);font-size:var(--sais-text-micro);color:rgba(250,250,248,.2);text-align:center">Conteúdo da página</div>
+        <div class="sais-sticky-cta">
+          <div>
+            <div class="sais-sticky-cta__text">Suíte Beira-Mar · 2 noites · 2 hóspedes</div>
+            <div class="sais-sticky-cta__price">R$ 1.780 <em>total</em></div>
+          </div>
+          <div class="sais-sticky-cta__actions">
+            <button class="sais-btn sais-btn--ghost" style="padding:0.625rem 1rem;font-size:0.75rem">Ver detalhes</button>
+            <button class="sais-btn sais-btn--cta" style="padding:0.625rem 1.5rem;font-size:0.75rem">Reservar agora</button>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:var(--sais-space-4);font-size:var(--sais-text-micro);color:rgba(250,250,248,.3)">
+        Em produção: <code style="color:var(--sais-gold);font-size:.75rem">position:fixed;bottom:0</code> · aparece via JS após scroll trigger · <code style="color:var(--sais-gold);font-size:.75rem">translateY(100%)</code> → <code style="color:var(--sais-gold);font-size:.75rem">translateY(0)</code>
+      </p>
+    </section>
+
+    <!-- ── 13 SEÇÕES MODELO ───────────────────────────── -->
+    <section class="sg-section" id="secoes">
+      <div class="sg-section__header">
+        <span class="sg-section__num">13</span>
+        <h2 class="sg-section__title">Seções Modelo</h2>
+        <p class="sg-section__desc">Templates de seção para a landing page. Cada padrão tem variação de fundo escuro e claro.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Hero — Fundo escuro com headline e CTA</h3>
+        <div class="sg-section-demo">
+          <div class="sg-section-demo__label">Hero · Seção de abertura</div>
+          <div class="sais-hero-demo">
+            <div class="sais-hero-demo__eyebrow">Ponta Verde · Maceió, Alagoas</div>
+            <h2 class="sais-hero-demo__h1">Viva o melhor<br>do litoral alagoano</h2>
+            <p class="sais-hero-demo__sub">12 suítes exclusivas a poucos passos do mar. Hospedagem contemporânea onde o design encontra a natureza de Alagoas.</p>
+            <div class="sais-hero-demo__actions">
+              <button class="sais-btn sais-btn--cta">Reservar agora</button>
+              <button class="sais-btn sais-btn--outline">Ver acomodações</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Split — Imagem + Texto</h3>
+        <div class="sg-section-demo">
+          <div class="sg-section-demo__label">Split Section · imagem esquerda, conteúdo direita</div>
+          <div class="sais-split-demo">
+            <div class="sais-split-demo__img">Foto ambiente</div>
+            <div class="sais-split-demo__content">
+              <div class="sais-split-demo__eyebrow">Nossas acomodações</div>
+              <h3 class="sais-split-demo__headline">Suítes pensadas para quem exige o melhor</h3>
+              <p class="sais-split-demo__body">Cada espaço foi projetado com atenção obsessiva ao detalhe — desde a escolha dos materiais até a posição estratégica das janelas para capturar a luz do mar.</p>
+              <button class="sais-btn sais-btn--outline" style="margin-top:var(--sais-space-5)">Conhecer suítes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Features — Grid de atributos</h3>
+        <div class="sg-section-demo">
+          <div class="sg-section-demo__label">Features Section · fundo dark-800</div>
+          <div style="background:var(--sais-dark-800);padding:var(--sais-space-8)">
+            <div style="text-align:center;margin-bottom:var(--sais-space-8)">
+              <div style="font-size:var(--sais-text-micro);letter-spacing:var(--sais-tracking-widest);text-transform:uppercase;color:var(--sais-gold);margin-bottom:var(--sais-space-3)">Por que o Sais</div>
+              <h3 style="font-family:var(--sais-font-body);font-size:clamp(1.5rem,3vw,2.25rem);color:var(--sais-areia);font-weight:400;line-height:1.2">Uma experiência que você não encontra em outro lugar</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sais-space-4)">
+              <div class="sais-feature-card"><div class="sais-feature-card__num">12</div><div class="sais-feature-card__title">Suítes Exclusivas</div><div class="sais-feature-card__desc">Nenhum corredor lotado. Apenas privacidade.</div></div>
+              <div class="sais-feature-card"><div class="sais-feature-card__num">100m</div><div class="sais-feature-card__title">Do Mar</div><div class="sais-feature-card__desc">Acesso direto à praia de Ponta Verde.</div></div>
+              <div class="sais-feature-card"><div class="sais-feature-card__num">24h</div><div class="sais-feature-card__title">Serviço</div><div class="sais-feature-card__desc">Atendimento personalizado a qualquer hora.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 14 IMAGENS & LOGO ──────────────────────────── -->
+    <section class="sg-section" id="imagens">
+      <div class="sg-section__header">
+        <span class="sg-section__num">14</span>
+        <h2 class="sg-section__title">Imagens & Logo</h2>
+        <p class="sg-section__desc">Critérios para seleção de imagens e regras de uso do logotipo em todos os contextos.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Logotipos — variações por fundo</h3>
+        <div class="sg-logo-grid">
+          <div class="sg-logo-cell dark">
+            <img src="imgs/LOGO + TAGLINE BRANCO.png" alt="Logo Branco + Tagline" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(250,250,248,.3)">LOGO + TAGLINE BRANCO.png</span>
+            <span class="sg-logo-cell__label">Fundo escuro · Logo + Tagline Branco</span>
+          </div>
+          <div class="sg-logo-cell light">
+            <img src="imgs/LOGO + TAGLINE PRETO.png" alt="Logo Preto + Tagline" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(43,26,13,.3)">LOGO + TAGLINE PRETO.png</span>
+            <span class="sg-logo-cell__label">Fundo claro · Logo + Tagline Preto</span>
+          </div>
+          <div class="sg-logo-cell dark">
+            <img src="imgs/LOGO + TAGLINE DOURADO.png" alt="Logo Dourado + Tagline" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(250,250,248,.3)">LOGO + TAGLINE DOURADO.png</span>
+            <span class="sg-logo-cell__label">Fundo escuro · Logo + Tagline Dourado</span>
+          </div>
+          <div class="sg-logo-cell dark">
+            <img src="imgs/LOGO BRANCO.png" alt="Logo Branco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(250,250,248,.3)">LOGO BRANCO.png</span>
+            <span class="sg-logo-cell__label">Fundo escuro · Logo Branco</span>
+          </div>
+          <div class="sg-logo-cell light">
+            <img src="imgs/LOGO PRETO.png" alt="Logo Preto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(43,26,13,.3)">LOGO PRETO.png</span>
+            <span class="sg-logo-cell__label">Fundo claro · Logo Preto</span>
+          </div>
+          <div class="sg-logo-cell mid">
+            <img src="imgs/LOGO DOURADO.png" alt="Logo Dourado" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(250,250,248,.3)">LOGO DOURADO.png</span>
+            <span class="sg-logo-cell__label">Fundo mid · Logo Dourado</span>
+          </div>
+          <div class="sg-logo-cell dark">
+            <img src="imgs/SELO BRANCO.png" alt="Selo Branco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(250,250,248,.3)">SELO BRANCO.png</span>
+            <span class="sg-logo-cell__label">Fundo escuro · Selo Branco</span>
+          </div>
+          <div class="sg-logo-cell dark">
+            <img src="imgs/SELO DOURADO.png" alt="Selo Dourado" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(250,250,248,.3)">SELO DOURADO.png</span>
+            <span class="sg-logo-cell__label">Fundo escuro · Selo Dourado</span>
+          </div>
+          <div class="sg-logo-cell light">
+            <img src="imgs/SELO PRETO.png" alt="Selo Preto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span style="display:none;font-size:.625rem;color:rgba(43,26,13,.3)">SELO PRETO.png</span>
+            <span class="sg-logo-cell__label">Fundo claro · Selo Preto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Diretrizes de fotografia</h3>
+        <div class="sg-image-rules">
+          <div class="sg-image-rule">
+            <div class="sg-image-rule__preview ok">✓ Aprovado</div>
+            <div class="sg-image-rule__label"><strong>Luz natural e quente</strong>Fotos com luz do amanhecer ou entardecer — tons dourados que reforçam a paleta da marca.</div>
+          </div>
+          <div class="sg-image-rule">
+            <div class="sg-image-rule__preview ok">✓ Aprovado</div>
+            <div class="sg-image-rule__label"><strong>Espaços e lifestyle</strong>Pessoas em situações relaxadas e elegantes, não posadas. Foco no ambiente e experiência.</div>
+          </div>
+          <div class="sg-image-rule">
+            <div class="sg-image-rule__preview ok">✓ Aprovado</div>
+            <div class="sg-image-rule__label"><strong>Mar e natureza alagoana</strong>Transparência das águas, areia branca, vegetação local — reforçam o diferencial do destino.</div>
+          </div>
+          <div class="sg-image-rule">
+            <div class="sg-image-rule__preview no">✗ Evitar</div>
+            <div class="sg-image-rule__label"><strong>Flash e luzes frias</strong>Evitar fotos com flash frontal, luz branca fria ou saturação excessiva — rompem com a atmosfera da marca.</div>
+          </div>
+          <div class="sg-image-rule">
+            <div class="sg-image-rule__preview no">✗ Evitar</div>
+            <div class="sg-image-rule__label"><strong>Stock genérico</strong>Não usar fotos de bancos que remetam a hotéis genéricos internacionais sem relação com Alagoas.</div>
+          </div>
+          <div class="sg-image-rule">
+            <div class="sg-image-rule__preview no">✗ Evitar</div>
+            <div class="sg-image-rule__label"><strong>Logotipo sobre fotos complexas</strong>Não aplicar logotipo sobre fundos texturizados sem overlay adequado. Usar sempre área limpa ou overlay escuro.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 15 CHECKLIST ───────────────────────────────── -->
+    <section class="sg-section" id="checklist">
+      <div class="sg-section__header">
+        <span class="sg-section__num">15</span>
+        <h2 class="sg-section__title">Checklist de Qualidade</h2>
+        <p class="sg-section__desc">Verifique estes itens antes de publicar qualquer peça de comunicação da marca Sais.</p>
+      </div>
+
+      <div class="sais-checklist">
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          <div class="sais-checklist-item__text"><strong>Fonte correta</strong>Todo texto usa Domaine Sans Text. Nenhum sistema font, Arial ou Helvetica em peças finais.</div>
+        </div>
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          <div class="sais-checklist-item__text"><strong>Paleta aprovada</strong>Apenas cores da paleta oficial. Nenhum roxo, azul vivo, vermelho não autorizado ou cinza puro.</div>
+        </div>
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          <div class="sais-checklist-item__text"><strong>Logotipo com área de proteção</strong>Margem mínima equivalente à altura do "S" do logotipo em todos os lados.</div>
+        </div>
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          <div class="sais-checklist-item__text"><strong>Contraste de acessibilidade</strong>Razão mínima de 4.5:1 para textos comuns, 3:1 para textos grandes (≥18pt).</div>
+        </div>
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="sais-checklist-item__text"><strong>Imagens com direitos confirmados</strong>Toda foto tem licença ou autorização de uso documentada. Fotos de hóspedes precisam de autorização expressa.</div>
+        </div>
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="sais-checklist-item__text"><strong>Tom de voz revisado</strong>Copy elegante, em primeira pessoa do plural ("nosso", "oferecemos"). Sem gírias, superlativo excessivo ou pressão explícita.</div>
+        </div>
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          <div class="sais-checklist-item__text"><strong>Versão mobile testada</strong>Todo layout funciona em 375px de largura sem overflow horizontal ou texto ilegível.</div>
+        </div>
+        <div class="sais-checklist-item">
+          <svg class="sais-checklist-item__icon ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          <div class="sais-checklist-item__text"><strong>CTA claro e único</strong>Cada peça tem apenas uma ação principal. Evitar múltiplos CTAs de peso igual na mesma view.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 16 O QUE EVITAR ────────────────────────────── -->
+    <section class="sg-section" id="evitar">
+      <div class="sg-section__header">
+        <span class="sg-section__num">16</span>
+        <h2 class="sg-section__title">O que Evitar</h2>
+        <p class="sg-section__desc">Erros comuns que comprometem a identidade da marca. Cada item documenta o porquê da restrição.</p>
+      </div>
+
+      <div class="sg-evitar-grid">
+        <div class="sg-evitar-item">
+          <span class="sg-evitar-item__badge">✗ Proibido</span>
+          <div class="sg-evitar-item__title">Distorcer o logotipo</div>
+          <div class="sg-evitar-item__desc">Nunca esticar, comprimir, rotacionar ou aplicar efeitos (sombra, stroke, glow) no logotipo.</div>
+          <div class="sg-evitar-item__example">Escala com proporção travada. Sempre usar o arquivo original.</div>
+        </div>
+        <div class="sg-evitar-item">
+          <span class="sg-evitar-item__badge">✗ Proibido</span>
+          <div class="sg-evitar-item__title">Cores fora da paleta</div>
+          <div class="sg-evitar-item__desc">Azul, verde vivo, roxo, laranja ou qualquer cor não presente nos tokens do design system.</div>
+          <div class="sg-evitar-item__example">Usar apenas: #8B7240 · #2B1A0D · #EBE3CF · #F5F0E4 · #CFC19A · #6B4E2E</div>
+        </div>
+        <div class="sg-evitar-item">
+          <span class="sg-evitar-item__badge">✗ Proibido</span>
+          <div class="sg-evitar-item__title">Fontes alternativas não aprovadas</div>
+          <div class="sg-evitar-item__desc">Arial, Helvetica, Times New Roman, ou qualquer fonte que não seja Domaine Sans Text / Domaine Display.</div>
+          <div class="sg-evitar-item__example">Usar Google Fonts apenas se Domaine não estiver disponível em peça interna/rascunho — nunca em publicações finais.</div>
+        </div>
+        <div class="sg-evitar-item">
+          <span class="sg-evitar-item__badge">✗ Proibido</span>
+          <div class="sg-evitar-item__title">Tom promocional agressivo</div>
+          <div class="sg-evitar-item__desc">Caps lock excessivo, múltiplos pontos de exclamação, countdown timers agressivos, linguagem de urgência artificial.</div>
+          <div class="sg-evitar-item__example">❌ "OFERTA IMPERDÍVEL!!! ÚLTIMAS VAGAS!!!"<br>✓ "Últimas disponibilidades para o período."</div>
+        </div>
+        <div class="sg-evitar-item">
+          <span class="sg-evitar-item__badge">✗ Proibido</span>
+          <div class="sg-evitar-item__title">Logotipo sobre fundos complexos</div>
+          <div class="sg-evitar-item__desc">Nunca aplicar logotipo diretamente sobre foto sem overlay. Contraste mínimo obrigatório.</div>
+          <div class="sg-evitar-item__example">Usar overlay: background: rgba(43,26,13,0.65) antes do logotipo.</div>
+        </div>
+        <div class="sg-evitar-item">
+          <span class="sg-evitar-item__badge">✗ Proibido</span>
+          <div class="sg-evitar-item__title">Imagens de baixa resolução</div>
+          <div class="sg-evitar-item__desc">Mínimo de 72dpi para web, 300dpi para impressão. Nunca ampliar imagens além do tamanho original.</div>
+          <div class="sg-evitar-item__example">Usar WebP otimizado para web. Máximo 200KB para imagens de fundo. JPEG 90% para fotos.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 17 ACESSIBILIDADE ──────────────────────────── -->
+    <section class="sg-section" id="acessibilidade">
+      <div class="sg-section__header">
+        <span class="sg-section__num">17</span>
+        <h2 class="sg-section__title">Acessibilidade</h2>
+        <p class="sg-section__desc">Conformidade com WCAG 2.1 AA. Luxo acessível — excelência não exclui.</p>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection__title">Pares de contraste aprovados</h3>
+        <div class="sg-contrast-row">
+          <div class="sg-contrast-pair" style="background:var(--sais-dark)">
+            <div class="sg-contrast-pair__sample" style="color:var(--sais-areia)">Areia sobre Dark</div>
+            <div class="sg-contrast-pair__ratio" style="color:var(--sais-areia)">≈ 10.2:1 · AAA ✓</div>
+          </div>
+          <div class="sg-contrast-pair" style="background:var(--sais-dark)">
+            <div class="sg-contrast-pair__sample" style="color:var(--sais-gold)">Gold sobre Dark</div>
+            <div class="sg-contrast-pair__ratio" style="color:var(--sais-gold)">≈ 4.8:1 · AA ✓</div>
+          </div>
+          <div class="sg-contrast-pair" style="background:var(--sais-cream)">
+            <div class="sg-contrast-pair__sample" style="color:var(--sais-dark)">Dark sobre Cream</div>
+            <div class="sg-contrast-pair__ratio" style="color:var(--sais-dark)">≈ 14.1:1 · AAA ✓</div>
+          </div>
+          <div class="sg-contrast-pair" style="background:var(--sais-gold)">
+            <div class="sg-contrast-pair__sample" style="color:var(--sais-dark)">Dark sobre Gold</div>
+            <div class="sg-contrast-pair__ratio" style="color:var(--sais-dark)">≈ 3.8:1 · AA Large ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-a11y-grid">
+        <div class="sg-a11y-card">
+          <div class="sg-a11y-card__num">01</div>
+          <div class="sg-a11y-card__title">Foco visível</div>
+          <div class="sg-a11y-card__desc">Todos os elementos interativos têm outline de foco: 2px solid var(--sais-gold). Nunca usar outline:none sem substituto visual.</div>
+        </div>
+        <div class="sg-a11y-card">
+          <div class="sg-a11y-card__num">02</div>
+          <div class="sg-a11y-card__title">Textos alternativos</div>
+          <div class="sg-a11y-card__desc">Toda imagem tem alt descritivo. Imagens decorativas usam alt="" para serem ignoradas por leitores de tela.</div>
+        </div>
+        <div class="sg-a11y-card">
+          <div class="sg-a11y-card__num">03</div>
+          <div class="sg-a11y-card__title">Hierarquia semântica</div>
+          <div class="sg-a11y-card__desc">Uma tag H1 por página. H2 para seções, H3 para subseções. Nunca pular níveis de heading por razões estéticas.</div>
+        </div>
+        <div class="sg-a11y-card">
+          <div class="sg-a11y-card__num">04</div>
+          <div class="sg-a11y-card__title">Labels em formulários</div>
+          <div class="sg-a11y-card__desc">Todo input tem label explícito associado via for/id. Nunca usar apenas placeholder como substituto de label.</div>
+        </div>
+        <div class="sg-a11y-card">
+          <div class="sg-a11y-card__num">05</div>
+          <div class="sg-a11y-card__title">Tamanho de toque</div>
+          <div class="sg-a11y-card__desc">Área mínima de toque: 44×44px. Botões com texto curto recebem padding extra para atingir o mínimo.</div>
+        </div>
+        <div class="sg-a11y-card">
+          <div class="sg-a11y-card__num">06</div>
+          <div class="sg-a11y-card__title">Redução de movimento</div>
+          <div class="sg-a11y-card__desc">Respeitar prefers-reduced-motion: reduzir ou eliminar animações para usuários sensíveis a movimento.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 18 PRINCÍPIOS ──────────────────────────────── -->
+    <section class="sg-section" id="principios">
+      <div class="sg-section__header">
+        <span class="sg-section__num">18</span>
+        <h2 class="sg-section__title">Princípios de Design</h2>
+        <p class="sg-section__desc">Os valores que guiam cada decisão visual e de comunicação da marca Sais.</p>
+      </div>
+
+      <div class="sg-principles-grid">
+        <div class="sg-principle">
+          <div class="sg-principle__num">01</div>
+          <div class="sg-principle__title">Autenticidade antes de perfeição</div>
+          <div class="sg-principle__desc">A marca Sais é honesta. Preferimos mostrar a beleza real de Alagoas — com sua luz, textura e imperfeição — a uma versão polida e genérica que poderia ser qualquer lugar do mundo.</div>
+        </div>
+        <div class="sg-principle">
+          <div class="sg-principle__num">02</div>
+          <div class="sg-principle__title">Silêncio é luxo</div>
+          <div class="sg-principle__desc">Espaço em branco não é vazio — é respiro. Layouts densos comunicam ansiedade. Layouts espaçados comunicam confiança, qualidade e presença de marca.</div>
+        </div>
+        <div class="sg-principle">
+          <div class="sg-principle__num">03</div>
+          <div class="sg-principle__title">Hierarquia que guia, não confunde</div>
+          <div class="sg-principle__desc">Uma única mensagem principal por tela. O olhar do hóspede deve saber imediatamente o que ler primeiro, o que fazer depois. Clareza é cortesia.</div>
+        </div>
+        <div class="sg-principle">
+          <div class="sg-principle__num">04</div>
+          <div class="sg-principle__title">Consistência gera confiança</div>
+          <div class="sg-principle__desc">O mesmo tom, a mesma paleta e a mesma tipografia em cada ponto de contato — do anúncio ao check-in — constroem reconhecimento e segurança no hóspede.</div>
+        </div>
+        <div class="sg-principle">
+          <div class="sg-principle__num">05</div>
+          <div class="sg-principle__title">Nordeste como identidade, não como cenário</div>
+          <div class="sg-principle__desc">Alagoas não é apenas onde ficamos. É quem somos. A culinária regional, a luz dourada da tarde, o azul único do mar — essas referências devem estar presentes em tudo.</div>
+        </div>
+        <div class="sg-principle">
+          <div class="sg-principle__num">06</div>
+          <div class="sg-principle__title">Cada pixel é hospitalidade</div>
+          <div class="sg-principle__desc">A experiência do hóspede começa no primeiro anúncio que ele vê. A fluidez, a legibilidade e a beleza do digital são tão importantes quanto o conforto do quarto.</div>
+        </div>
+      </div>
+
+      <!-- Footer do Design System -->
+      <div style="margin-top:var(--sais-space-16);padding-top:var(--sais-space-8);border-top:1px solid rgba(139,114,64,0.12);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sais-space-4)">
+        <div>
+          <img src="imgs/LOGO BRANCO.png" alt="Sais Hotel" style="height:32px;opacity:.7;margin-bottom:var(--sais-space-2)" onerror="this.style.display='none'"/>
+          <div style="font-size:var(--sais-text-micro);color:rgba(250,250,248,.28);letter-spacing:var(--sais-tracking-wider)">Design System · v1.0 · 2025</div>
+        </div>
+        <div style="font-size:var(--sais-text-micro);color:rgba(250,250,248,.2);text-align:right;line-height:1.6">
+          Uso interno · Não compartilhar externamente<br>
+          Ponta Verde · Maceió, Alagoas
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// ── Mobile toggle ────────────────────────────────────
+const toggle = document.getElementById('mobileToggle');
+const sidebar = document.getElementById('sidebar');
+toggle.addEventListener('click', () => {
+  sidebar.classList.toggle('is-open');
+});
+
+// ── Active nav on scroll ─────────────────────────────
+const sections = document.querySelectorAll('.sg-section[id]');
+const navItems = document.querySelectorAll('.sg-nav__item');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navItems.forEach(a => {
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -65% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// ── Animate in on scroll ─────────────────────────────
+const animatables = document.querySelectorAll('[data-animate]');
+const animObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+animatables.forEach(el => animObs.observe(el));
+
+// Trigger animate-in for elements already in view
+setTimeout(() => {
+  animatables.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('is-visible');
+    }
+  });
+}, 100);
+
+// ── Parallax ─────────────────────────────────────────
+const parallaxBg = document.getElementById('sg-parallax-bg');
+const parallaxDemo = document.getElementById('sg-parallax-demo');
+if (parallaxBg && parallaxDemo) {
+  window.addEventListener('scroll', () => {
+    const rect = parallaxDemo.getBoundingClientRect();
+    const offset = rect.top / window.innerHeight;
+    parallaxBg.style.transform = `translateY(${offset * 18}%)`;
+  }, { passive: true });
+}
+
+// ── Accordion ────────────────────────────────────────
+document.querySelectorAll('.sais-accordion-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.sais-accordion-item');
+    const accordion = item.closest('.sais-accordion');
+    // Close others
+    accordion.querySelectorAll('.sais-accordion-item.is-open').forEach(open => {
+      if (open !== item) open.classList.remove('is-open');
+    });
+    item.classList.toggle('is-open');
+  });
+});
+
+// ── Nav smooth scroll + close mobile sidebar ─────────
+document.querySelectorAll('.sg-nav__item').forEach(a => {
+  a.addEventListener('click', () => {
+    sidebar.classList.remove('is-open');
+  });
+});
+</script>
+</body>
+</html>

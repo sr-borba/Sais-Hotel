@@ -1,0 +1,219 @@
+/* =====================================================
+   DESIGN TOKENS — SAIS BEACH LIVING HOTEL
+   Referência visual · Ponta Verde · Maceió, Alagoas
+   ===================================================== */
+
+/* ── FONTES ─────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Light.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Light Italic.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Medium.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Medium Italic.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Bold Italic.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Sans Text';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Domaine Sans Text Black.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Domaine Display';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/FontsFree-Net-DomaineDisplayBlack.ttf') format('truetype');
+}
+
+
+:root {
+
+  /* ── CORES ──────────────────────────────────────────── */
+
+  /* Areia — fundos claros, áreas de respiro */
+  --sais-areia-50:  #FAF7F2;
+  --sais-areia-100: #F5F0E4;
+  --sais-areia-200: #EBE3CF;
+  --sais-areia-300: #D9CEAF;
+  --sais-areia:     #EBE3CF;
+
+  /* Gold — destaques, CTAs, logotipo */
+  --sais-gold-200:  #D5C99A;
+  --sais-gold:      #8B7240;
+  --sais-gold-deep: #6A5530;
+
+  /* Divider / Accent — linhas, bordas douradas suaves */
+  --sais-divider:   #CFC19A;
+
+  /* Escuro — textos fortes, profundidade, hero */
+  --sais-dark-600:  #4E3320;
+  --sais-dark-800:  #3A1F0E;
+  --sais-dark:      #2B1A0D;
+
+  /* Mid — textos corpo, tons intermediários */
+  --sais-mid:       #6B4E2E;
+
+  /* Cream — fundo base muito claro */
+  --sais-cream:     #F5F0E4;
+
+  /* Branco suave */
+  --sais-branco:    #FAFAF8;
+
+  /* ── TIPOGRAFIA ───────────────────────────────────────── */
+
+  /* Domaine Display → apenas numerais e tarifas */
+  --sais-font-display: 'Domaine Display', 'Domaine Sans Text', Georgia, serif;
+  /* Domaine Sans Text → todo o restante (Regular ou Italic) */
+  --sais-font-body:    'Domaine Sans Text', system-ui, -apple-system, sans-serif;
+  --sais-font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* Escala fluida */
+  --sais-text-h1:      clamp(2.25rem, 5vw, 3.75rem);
+  --sais-text-h2:      clamp(1.625rem, 3.5vw, 2.5rem);
+  --sais-text-h3:      clamp(1.25rem, 2.5vw, 1.75rem);
+  --sais-text-sub:     clamp(1rem, 2vw, 1.25rem);
+  --sais-text-body:    1rem;
+  --sais-text-body-sm: 0.9375rem;
+  --sais-text-caption: 0.875rem;
+  --sais-text-micro:   0.75rem;
+  --sais-text-button:  0.8125rem;
+  --sais-text-badge:   0.6875rem;
+
+  /* Pesos */
+  --sais-weight-light:    300;
+  --sais-weight-regular:  400;
+  --sais-weight-medium:   500;
+  --sais-weight-bold:     700;
+  --sais-weight-black:    900;
+
+  /* Line-height */
+  --sais-leading-tight:   1.1;
+  --sais-leading-snug:    1.3;
+  --sais-leading-normal:  1.55;
+  --sais-leading-relaxed: 1.75;
+
+  /* Letter-spacing */
+  --sais-tracking-tight:   -0.02em;
+  --sais-tracking-normal:   0em;
+  --sais-tracking-wide:     0.04em;
+  --sais-tracking-wider:    0.08em;
+  --sais-tracking-widest:   0.14em;
+
+
+  /* ── ESPAÇAMENTO ──────────────────────────────────────── */
+
+  --sais-space-1:  0.25rem;
+  --sais-space-2:  0.5rem;
+  --sais-space-3:  0.75rem;
+  --sais-space-4:  1rem;
+  --sais-space-5:  1.25rem;
+  --sais-space-6:  1.5rem;
+  --sais-space-8:  2rem;
+  --sais-space-10: 2.5rem;
+  --sais-space-12: 3rem;
+  --sais-space-16: 4rem;
+  --sais-space-20: 5rem;
+  --sais-space-24: 6rem;
+  --sais-space-32: 8rem;
+
+  --sais-section-y:  var(--sais-space-20);
+  --sais-section-x:  var(--sais-space-16);
+  --sais-card-pad:   var(--sais-space-6);
+  --sais-card-gap:   var(--sais-space-6);
+  --sais-btn-y:      0.875rem;
+  --sais-btn-x:      2rem;
+
+
+  /* ── GRID E CONTAINER ──────────────────────────────── */
+
+  --sais-container:        1200px;
+  --sais-container-narrow: 720px;
+  --sais-gutter:           2rem;
+
+
+  /* ── BORDER RADIUS ─────────────────────────────────── */
+
+  --sais-radius-none: 0;
+  --sais-radius-xs:   2px;
+  --sais-radius-sm:   4px;
+  --sais-radius-md:   8px;
+  --sais-radius-lg:   16px;
+  --sais-radius-full: 9999px;
+
+
+  /* ── BORDAS ─────────────────────────────────────────── */
+
+  --sais-border:         1px solid rgba(139, 114, 64, 0.15);
+  --sais-border-medium:  1px solid rgba(139, 114, 64, 0.28);
+  --sais-border-gold:    1px solid rgba(207, 193, 154, 0.45);
+  --sais-border-focus:   2px solid var(--sais-gold);
+
+
+  /* ── SOMBRAS ─────────────────────────────────────────── */
+
+  --sais-shadow-none:     none;
+  --sais-shadow-subtle:   0 1px 4px rgba(43, 26, 13, 0.06),
+                          0 2px 8px rgba(43, 26, 13, 0.04);
+  --sais-shadow-card:     0 2px 8px rgba(43, 26, 13, 0.08),
+                          0 4px 16px rgba(43, 26, 13, 0.05);
+  --sais-shadow-elevated: 0 4px 16px rgba(43, 26, 13, 0.10),
+                          0 8px 32px rgba(43, 26, 13, 0.07);
+
+
+  /* ── TRANSIÇÕES ─────────────────────────────────────── */
+
+  --sais-transition-fast: 150ms ease;
+  --sais-transition-base: 250ms ease;
+  --sais-transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /* ── Z-INDEX ─────────────────────────────────────────── */
+
+  --sais-z-dropdown: 100;
+  --sais-z-sticky:   200;
+  --sais-z-overlay:  300;
+}
