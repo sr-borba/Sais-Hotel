@@ -1,0 +1,173 @@
+/* =====================================================
+   DESIGN TOKENS — SPA L'OCCITANE EN PROVENCE @ SAIS HOTEL
+   Atualizado com base no Brandbook Oficial L'Occitane en
+   Provence 2026 ("GUIA APLICAÇÕES OC.pdf")
+   Uso: materiais co-branded do SPA. Para materiais gerais
+   do hotel, manter sais-tokens.css (ds-sais) como base.
+   ===================================================== */
+
+/* ── FONTES OFICIAIS L'OCCITANE (Web Font Suite) ──────── */
+
+@font-face {
+  font-family: 'LOccitane Sans';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Light.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Regular.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Sans';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Italic.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Sans';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Medium.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Sans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Bold.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Sans';
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-BoldItalic.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Sans/LOccitaneSans-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'LOccitane Serif';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-Regular.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Serif';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-Italic.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Serif';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-Bold.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'LOccitane Serif';
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-BoldItalic.woff2') format('woff2'),
+       url('../LOGOS/2026/Tipografia/Web Font Suite/LOccitane Serif/LOccitaneSerif-BoldItalic.woff') format('woff');
+}
+
+/* ATENÇÃO: "LOccitane Serif Medium Condensed" só existe como .ttf
+   (Tipografia/font/LOccitaneSerifCondensed-Medium.ttf) — não há
+   variante .woff/.woff2. Para uso web, converter ou usar como
+   fallback @font-face com format('truetype'). Ver seção de
+   pendências no DS-SPA-LOCCITANE-2026.md. */
+@font-face {
+  font-family: 'LOccitane Serif Condensed';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('../LOGOS/2026/Tipografia/font/LOccitaneSerifCondensed-Medium.ttf') format('truetype');
+}
+
+
+:root {
+
+  /* ── CORES FUNDAMENTAIS DA MAISON (oficiais 2026) ────── */
+
+  --oc-soleil-jaune:     #FFC700; /* Pantone 7548C — uso restrito, toques/embalagens, nunca grandes áreas */
+  --oc-noir-terres:      #3E2B2E; /* Pantone Black 5C — cor associada ao logotipo, títulos, sinalização */
+  --oc-beige-pierres:    #F2E9DB; /* Pantone 9224C — tecidos, revestimentos, cenário de produto */
+  --oc-blanc-brule:      #FBF9F6; /* background de apresentações/sites, molduras */
+  --oc-blanc-brule-moyen:#F9F5F0; /* fundo de fotos de produto */
+
+  /* ── CORES COMPLEMENTARES DA MAISON (oficiais 2026) ──── */
+
+  --oc-lichen:               #9C774C;
+  --oc-pierre-fontaine:      #A58671;
+  --oc-terre-oxyde:          #A56E5C;
+  --oc-roussillon-orageux:   #8E4C43;
+  --oc-lavande-valensolaire: #5B3845;
+  --oc-olivier-feuille:      #7D7C67;
+  --oc-chant-grillon:        #738287;
+  --oc-nuit-haute-provencale:#232B38;
+  --oc-garrigue:             #53624B;
+  --oc-verveine-soir:        #A2A468;
+
+  /* ── TIPOGRAFIA OFICIAL L'OCCITANE ────────────────────── */
+
+  /* Display editorial — títulos grandes, citações, capas */
+  --oc-font-serif: 'LOccitane Serif', Georgia, serif;
+  /* Display condensado — títulos curtos em destaque (estilo brandbook) */
+  --oc-font-serif-condensed: 'LOccitane Serif Condensed', 'LOccitane Serif', Georgia, serif;
+  /* Texto corrido, UI, legendas, menus */
+  --oc-font-sans: 'LOccitane Sans', system-ui, -apple-system, sans-serif;
+
+  /* Escala — espelha sais-text-* para troca direta de fonte sem
+     recalcular hierarquia */
+  --oc-text-display:   clamp(2.75rem, 6vw, 4.5rem);
+  --oc-text-h1:        clamp(2.25rem, 5vw, 3.75rem);
+  --oc-text-h2:        clamp(1.625rem, 3.5vw, 2.5rem);
+  --oc-text-h3:        clamp(1.25rem, 2.5vw, 1.75rem);
+  --oc-text-sub:       clamp(1rem, 2vw, 1.25rem);
+  --oc-text-body:      1rem;
+  --oc-text-body-sm:   0.9375rem;
+  --oc-text-caption:   0.875rem;
+  --oc-text-micro:     0.75rem;
+
+  --oc-weight-light:   300;
+  --oc-weight-regular: 400;
+  --oc-weight-medium:  500;
+  --oc-weight-bold:    700;
+
+  --oc-leading-tight:   1.1;
+  --oc-leading-snug:    1.3;
+  --oc-leading-normal:  1.6;
+  --oc-leading-relaxed: 1.8;
+
+  --oc-tracking-tight:  -0.01em;
+  --oc-tracking-normal:  0em;
+  --oc-tracking-caps:    0.18em; /* small caps / kickers, padrão do brandbook */
+
+  /* ── LOGO — área de respiro mínima ────────────────────── */
+  /* Margem lateral = largura do "O" do logotipo;
+     margem topo/base = metade da altura do "O". Calcular
+     proporcionalmente ao tamanho de aplicação do logo. */
+  --oc-logo-min-width-main:  29mm; /* abaixo disso, usar versão "small logo" */
+
+  /* ── BORDER RADIUS — manter retilíneo (alinhado ao ds-sais) */
+  --oc-radius: 0;
+}

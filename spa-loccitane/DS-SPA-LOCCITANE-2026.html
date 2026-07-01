@@ -1,0 +1,1382 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Design System — Spa L'Occitane en Provence @ Sais Hotel · 2026</title>
+<link rel="stylesheet" href="oc-spa-tokens.css"/>
+<style>
+
+/* ── SEMANTIC TEXT COLORS ───────────────────────────────────────
+   Derived from --oc-noir-terres (#3E2B2E).
+   All values verified ≥ 4.5:1 on --oc-blanc-brule (#FBF9F6).  */
+:root {
+  --oc-text-ink:   #3E2B2E; /* 16.5:1 — headings, emphasis      */
+  --oc-text-body:  #5C4A4D; /*  7.7:1 — body paragraphs         */
+  --oc-text-muted: #7A6568; /*  5.1:1 — captions, labels        */
+  --oc-text-faint: #9E8E90; /*  3.0:1 — decorative display only */
+}
+
+/* ── RESET ─────────────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth }
+body {
+  font-family: var(--oc-font-sans);
+  background: var(--oc-blanc-brule);
+  color: var(--oc-text-body);
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+}
+a { color: inherit; text-decoration: none }
+img { display: block; max-width: 100% }
+
+/* ── STICKY NAV ─────────────────────────────────────────────────── */
+.topnav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--oc-blanc-brule);
+  border-bottom: 1px solid rgba(62,43,46,0.10);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 52px;
+}
+.topnav__logo {
+  font-family: var(--oc-font-serif);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--oc-text-muted);
+  white-space: nowrap;
+}
+.topnav__links {
+  display: flex; gap: 2rem; overflow-x: auto;
+}
+.topnav__links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--oc-text-muted);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.topnav__links a:hover,
+.topnav__links a.active { color: var(--oc-text-ink) }
+.topnav__btn {
+  appearance: none; border: none; background: transparent;
+  cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--oc-text-muted);
+  border: 1px solid rgba(62,43,46,0.20);
+  padding: 0.35rem 0.85rem;
+  transition: all 0.2s;
+}
+.topnav__btn:hover { border-color: var(--oc-text-ink); color: var(--oc-text-ink) }
+.topnav__btn[aria-expanded="true"] { background: var(--oc-noir-terres); color: var(--oc-beige-pierres); border-color: var(--oc-noir-terres) }
+
+/* ── SUMMARY PANEL ─────────────────────────────────────────────── */
+.summary-backdrop {
+  position: fixed; inset: 0; z-index: 190;
+  background: rgba(0,0,0,0.40);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.summary-backdrop.is-open { opacity: 1; pointer-events: auto }
+.summary-panel {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 200;
+  width: min(320px, 90vw);
+  background: var(--oc-noir-terres);
+  padding: 4.5rem 2.5rem 3rem;
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.summary-panel.is-open { transform: translateX(0) }
+.summary-panel__title {
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--oc-soleil-jaune);
+  margin-bottom: 2.5rem;
+}
+.summary-panel a {
+  font-family: var(--oc-font-serif);
+  font-size: 0.9375rem;
+  color: rgba(242,233,219,0.55);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(242,233,219,0.08);
+  display: block;
+  transition: color 0.2s;
+}
+.summary-panel a:first-of-type { border-top: 1px solid rgba(242,233,219,0.08) }
+.summary-panel a:hover { color: var(--oc-beige-pierres) }
+.summary-panel a.active { color: var(--oc-soleil-jaune) }
+.summary-panel__close {
+  appearance: none; border: none; cursor: pointer;
+  background: rgba(242,233,219,0.08);
+  color: var(--oc-beige-pierres);
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  margin-top: 2.5rem;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+.summary-panel__close:hover { background: rgba(242,233,219,0.15) }
+
+/* ── ACCENT LINE ────────────────────────────────────────────────── */
+.accent-line {
+  display: block; width: 2px; height: 36px;
+  background: var(--oc-soleil-jaune);
+  margin: 0 auto;
+}
+
+/* ── SLIDE — SECTION OPENER ─────────────────────────────────────── */
+.slide {
+  position: relative;
+  min-height: 520px;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.slide .accent-line { position: absolute; top: 0; left: 50% }
+.slide__kicker {
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.13em; text-transform: uppercase;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 3rem;
+  color: rgba(251,249,246,0.45);
+  margin-top: 36px;
+}
+.slide__body {
+  flex: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 4rem 3rem 5.5rem;
+  gap: 4rem;
+}
+.slide__title {
+  font-family: var(--oc-font-serif-condensed);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.slide__desc {
+  font-family: var(--oc-font-serif);
+  font-style: italic;
+  font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+  line-height: 1.75;
+  color: rgba(251,249,246,0.75);
+}
+.slide__num {
+  position: absolute; bottom: 1.75rem; right: 3rem;
+  font-family: var(--oc-font-serif);
+  font-size: 0.75rem;
+  color: rgba(251,249,246,0.28);
+  letter-spacing: 0.08em;
+}
+
+/* Slide color variants */
+.slide--noir    { background: var(--oc-noir-terres);             color: var(--oc-blanc-brule) }
+.slide--roussillon { background: var(--oc-roussillon-orageux);   color: var(--oc-blanc-brule) }
+.slide--lavande { background: var(--oc-lavande-valensolaire);    color: var(--oc-blanc-brule) }
+.slide--garrigue{ background: var(--oc-garrigue);                color: var(--oc-blanc-brule) }
+.slide--chant   { background: var(--oc-chant-grillon);           color: var(--oc-blanc-brule) }
+.slide--beige   { background: var(--oc-beige-pierres);           color: var(--oc-text-ink) }
+.slide--jaune   {
+  background: radial-gradient(ellipse at 50% 50%, #FFC700 0%, #F5B800 55%, var(--oc-beige-pierres) 100%);
+  color: var(--oc-text-ink);
+}
+.slide--beige .slide__kicker,
+.slide--jaune .slide__kicker { color: rgba(62,43,46,0.42) }
+.slide--beige .slide__desc   { color: rgba(62,43,46,0.68) }
+.slide--beige .slide__num,
+.slide--jaune .slide__num    { color: rgba(62,43,46,0.28) }
+
+/* ── CONTENT SECTION ─────────────────────────────────────────────── */
+.content {
+  position: relative;
+  padding: 5.5rem 3rem 6.5rem;
+  border-bottom: 1px solid rgba(62,43,46,0.07);
+}
+.content:nth-child(even) { background: rgba(242,233,219,0.22) }
+.content .accent-line { position: absolute; top: 0; left: 50% }
+
+.content__headline {
+  font-family: var(--oc-font-serif-condensed);
+  font-size: clamp(1.875rem, 3.8vw, 3rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.0;
+  margin-bottom: 2rem;
+  color: var(--oc-text-ink);
+  text-wrap: balance;
+}
+.content__sub {
+  font-family: var(--oc-font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--oc-text-body);
+  max-width: 70ch;
+  margin-bottom: 3rem;
+}
+
+/* ── GRIDS ────────────────────────────────────────────────────────── */
+.cols2  { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem }
+.cols3  { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem }
+.cols4  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.75rem }
+
+/* ── POSITION CARDS (sem border-left) ───────────────────────────── */
+.pos-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 2rem }
+.pos-card {
+  background: rgba(242,233,219,0.55);
+  border: 1px solid rgba(62,43,46,0.10);
+  padding: 2.25rem 2rem;
+}
+.pos-card h4 {
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase;
+  font-weight: 500;
+  color: var(--oc-roussillon-orageux);
+  margin-bottom: 0.85rem;
+}
+.pos-card p {
+  font-size: 0.9375rem;
+  color: var(--oc-text-body);
+  line-height: 1.7;
+}
+
+/* ── QUOTE (sem border-left — top accent instead) ───────────────── */
+.oc-quote {
+  font-family: var(--oc-font-serif);
+  font-style: italic;
+  font-size: clamp(1.125rem, 2.2vw, 1.5625rem);
+  line-height: 1.75;
+  padding: 3.5rem 4rem;
+  background: var(--oc-noir-terres);
+  color: var(--oc-beige-pierres);
+  text-align: center;
+  max-width: 72ch;
+  margin: 2.5rem auto;
+  border-top: 2px solid var(--oc-soleil-jaune);
+}
+
+/* ── VOCAB ────────────────────────────────────────────────────────── */
+.vocab { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 2rem }
+.vocab-card {
+  padding: 2rem;
+  border: 1px solid rgba(62,43,46,0.09);
+  background: var(--oc-blanc-brule);
+}
+.vocab-card h5 {
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.vocab-card.use  h5 { color: var(--oc-garrigue) }
+.vocab-card.avoid h5 { color: var(--oc-terre-oxyde) }
+.vocab-card.never h5 { color: var(--oc-roussillon-orageux) }
+.vocab-card p {
+  font-size: 0.9375rem;
+  color: var(--oc-text-body);
+  line-height: 1.7;
+}
+
+/* ── TOM SCALES ──────────────────────────────────────────────────── */
+.scale-row {
+  display: flex; align-items: center; gap: 2rem;
+  margin-bottom: 1.25rem; font-size: 0.9375rem;
+}
+.scale-lbl {
+  width: 130px; text-align: right;
+  font-size: 0.8125rem;
+  color: var(--oc-roussillon-orageux); font-weight: 500;
+}
+.scale-lbl.r { text-align: left }
+.scale-track { flex: 1; height: 2px; background: rgba(62,43,46,0.12); position: relative }
+.scale-dot {
+  position: absolute; top: 50%;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--oc-text-ink);
+  transform: translate(-50%,-50%);
+}
+
+/* ── CÍRCULOS DE COR ─────────────────────────────────────────────── */
+.circles {
+  display: flex; flex-wrap: wrap; gap: 3rem;
+  align-items: flex-start; margin-top: 2rem;
+}
+.circle-item {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.circle-wrap {
+  width: 108px; height: 108px; border-radius: 50%;
+  background: var(--oc-beige-pierres);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 4px var(--oc-beige-pierres),
+              0 0 0 7px var(--oc-soleil-jaune),
+              0 0 0 10px var(--oc-beige-pierres);
+}
+.circle-swatch { width: 78px; height: 78px; border-radius: 50% }
+.circle-name {
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; text-align: center;
+  color: var(--oc-text-ink);
+}
+.circle-hex {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--oc-text-muted);
+  text-align: center;
+  font-family: var(--oc-font-sans);
+}
+.circle-wrap--lg {
+  width: 148px; height: 148px;
+  box-shadow: 0 0 0 5px var(--oc-beige-pierres),
+              0 0 0 9px var(--oc-soleil-jaune),
+              0 0 0 13px var(--oc-beige-pierres);
+}
+.circle-wrap--lg .circle-swatch { width: 110px; height: 110px }
+
+/* ── DIAGRAMA CONCÊNTRICO ────────────────────────────────────────── */
+.concentric-wrap { display: flex; align-items: center; justify-content: center; padding: 3rem 0 }
+.concentric {
+  position: relative; width: 340px; height: 340px;
+  display: flex; align-items: center; justify-content: center;
+}
+.ring {
+  position: absolute; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.ring--1 { width: 340px; height: 340px; background: var(--oc-blanc-brule) }
+.ring--2 { width: 276px; height: 276px; background: var(--oc-beige-pierres) }
+.ring--3 { width: 192px; height: 192px; background: var(--oc-soleil-jaune) }
+.ring--4 {
+  width: 108px; height: 108px; background: var(--oc-noir-terres);
+  font-family: var(--oc-font-sans); font-size: 0.6rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--oc-beige-pierres); text-align: center; line-height: 1.5;
+  padding: 0.75rem;
+}
+.ring-label {
+  position: absolute;
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--oc-text-muted); font-weight: 500;
+}
+.rl-blanc { bottom: -2rem; left: 50%; transform: translateX(-50%) }
+.rl-beige { bottom: 0.75rem; left: 50%; transform: translateX(-50%); color: var(--oc-text-faint) }
+.rl-jaune {
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  color: var(--oc-text-ink); font-size: 0.6rem; text-align: center; line-height: 1.4;
+}
+
+/* Ring reveal animation */
+.ring { transition: opacity 0.6s ease, transform 0.6s ease; }
+.concentric:not(.is-visible) .ring { opacity: 0; transform: scale(0.88) }
+.concentric.is-visible .ring--1 { transition-delay: 0s }
+.concentric.is-visible .ring--2 { transition-delay: 0.12s }
+.concentric.is-visible .ring--3 { transition-delay: 0.24s }
+.concentric.is-visible .ring--4 { transition-delay: 0.36s }
+@media (prefers-reduced-motion: reduce) {
+  .ring { transition: none; opacity: 1 !important; transform: none !important }
+}
+
+/* ── TIPOGRAFIA / TYPE SPECIMEN ──────────────────────────────────── */
+.type-specimen {
+  border: 1px solid rgba(62,43,46,0.09);
+  margin-bottom: 1.75rem;
+}
+.type-specimen__label {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--oc-text-muted);
+  border-bottom: 1px solid rgba(62,43,46,0.07);
+  background: rgba(242,233,219,0.18);
+  flex-wrap: wrap; gap: 0.5rem;
+}
+.type-specimen__label code {
+  font-family: var(--oc-font-sans); text-transform: none;
+  letter-spacing: 0; font-size: 0.8125rem;
+  color: var(--oc-text-muted);
+}
+.type-specimen__body { padding: 2.5rem 1.75rem }
+
+/* ── TABLE ───────────────────────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.9375rem }
+th {
+  text-align: left; font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--oc-text-muted); padding: 0.75rem 1.25rem;
+  border-bottom: 2px solid var(--oc-text-ink);
+  background: rgba(62,43,46,0.03);
+}
+td {
+  padding: 0.9rem 1.25rem; border-bottom: 1px solid rgba(62,43,46,0.07);
+  vertical-align: top; color: var(--oc-text-body); line-height: 1.6;
+}
+tr:hover td { background: rgba(242,233,219,0.35) }
+code {
+  font-family: var(--oc-font-sans); font-size: 0.8125em;
+  background: rgba(62,43,46,0.06); padding: 0.1rem 0.45rem;
+  color: var(--oc-roussillon-orageux);
+}
+strong { color: var(--oc-text-ink) }
+
+/* ── LOGO GRID ────────────────────────────────────────────────────── */
+.logo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 2rem }
+.logo-cell { border: 1px solid rgba(62,43,46,0.09) }
+.logo-cell .stage {
+  height: 190px; display: flex; align-items: center; justify-content: center; padding: 2.5rem;
+}
+.logo-cell .stage.noir  { background: var(--oc-noir-terres) }
+.logo-cell .stage.beige { background: var(--oc-beige-pierres) }
+.logo-cell .stage.blanc { background: var(--oc-blanc-brule) }
+.logo-cell img { max-width: 80%; max-height: 80%; object-fit: contain }
+.logo-cell .cap {
+  padding: 0.85rem 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--oc-text-muted);
+  border-top: 1px solid rgba(62,43,46,0.07);
+}
+
+/* ── DON'TS LIST ──────────────────────────────────────────────────── */
+.dont-list {
+  list-style: none; margin-top: 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.dont-list li {
+  font-size: 0.9375rem; padding: 0.85rem 0.85rem 0.85rem 2rem;
+  position: relative;
+  border-bottom: 1px solid rgba(62,43,46,0.07);
+  color: var(--oc-text-body);
+}
+.dont-list li::before {
+  content: "✕"; position: absolute; left: 0.65rem;
+  color: var(--oc-roussillon-orageux);
+}
+
+/* ── HARMONIZAÇÃO NOTE ───────────────────────────────────────────── */
+.harm-note {
+  background: rgba(255,199,0,0.06);
+  border: 1px solid rgba(255,199,0,0.28);
+  border-top: 2px solid var(--oc-soleil-jaune);
+  padding: 1.5rem 1.75rem;
+  font-size: 0.9375rem;
+  margin-top: 2rem;
+  color: var(--oc-text-body);
+  line-height: 1.7;
+}
+
+/* ── PENDÊNCIAS (sem border-left) ───────────────────────────────── */
+.pend-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem }
+.pend-item {
+  display: grid; grid-template-columns: 2.75rem 1fr;
+  gap: 2rem; padding: 2rem 2.25rem;
+  border: 1px solid rgba(62,43,46,0.09);
+  background: rgba(242,233,219,0.30);
+  align-items: start;
+}
+.pend-item .n {
+  font-family: var(--oc-font-serif);
+  font-size: 2.25rem; line-height: 1;
+  color: var(--oc-text-faint); /* decorative — large type, 3:1 ok */
+  text-align: right;
+  padding-top: 0.1rem;
+}
+.pend-item strong {
+  display: block; margin-bottom: 0.4rem;
+  color: var(--oc-text-ink); font-size: 0.9375rem;
+}
+.pend-item p {
+  font-size: 0.875rem; color: var(--oc-text-body); line-height: 1.7;
+}
+
+/* ── PRE CODE ─────────────────────────────────────────────────────── */
+pre {
+  background: var(--oc-noir-terres); color: var(--oc-beige-pierres);
+  padding: 2rem 2.25rem; overflow-x: auto;
+  font-size: 0.875rem; font-family: var(--oc-font-sans);
+  line-height: 1.9; margin-top: 1.5rem; letter-spacing: 0.02em;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+footer {
+  padding: 4rem 3rem; text-align: center;
+  font-size: 0.8125rem; letter-spacing: 0.06em;
+  color: var(--oc-text-muted);
+  border-top: 1px solid rgba(62,43,46,0.09);
+}
+
+/* ── COVER SPECIFICS ─────────────────────────────────────────────── */
+.cover-monogram {
+  position: absolute;
+  right: -6%; bottom: -8%;
+  width: 55vh; height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+.cover-content {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 3rem 6rem;
+  gap: 0;
+}
+.cover-eyebrow {
+  font-family: var(--oc-font-sans);
+  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--oc-soleil-jaune);
+  margin-bottom: 2.25rem;
+}
+.cover-logo-img {
+  max-width: 280px;
+  filter: brightness(0) invert(0.92) sepia(0.1);
+  margin-bottom: 3.5rem;
+}
+.cover-title {
+  font-family: var(--oc-font-serif-condensed);
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 0.90;
+  letter-spacing: -0.01em;
+  color: var(--oc-blanc-brule);
+  text-wrap: balance;
+  margin-bottom: 2.5rem;
+}
+.cover-title em {
+  font-style: italic;
+  color: rgba(251,249,246,0.40);
+}
+.cover-desc {
+  font-family: var(--oc-font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.75vw, 1.25rem);
+  color: rgba(242,233,219,0.60);
+  line-height: 1.75;
+  max-width: 50ch;
+}
+.cover-meta {
+  margin-top: 3.5rem;
+  font-size: 0.75rem; letter-spacing: 0.06em;
+  color: rgba(242,233,219,0.28);
+}
+
+/* ── COVER MONOGRAM BIG (right col) ─────────────────────────────── */
+.cover-right {
+  display: flex; align-items: center; justify-content: center;
+}
+.cover-right-monogram {
+  width: clamp(200px, 28vw, 360px); height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.10;
+}
+
+/* ── SCROLL REVEAL ──────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.is-visible { opacity: 1; transform: none }
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-up.is-visible { opacity: 1; transform: none }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-up { opacity: 1; transform: none; transition: none }
+}
+
+/* ── COVER ENTRANCE ANIMATIONS ──────────────────────────────────── */
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(22px) }
+  to   { opacity: 1; transform: none }
+}
+.anim-cover-1 {
+  opacity: 0;
+  animation: fade-rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s forwards;
+}
+.anim-cover-2 {
+  opacity: 0;
+  animation: fade-rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.40s forwards;
+}
+.anim-cover-3 {
+  opacity: 0;
+  animation: fade-rise 0.8s ease 0.65s forwards;
+}
+.anim-cover-4 {
+  opacity: 0;
+  animation: fade-rise 0.7s ease 0.85s forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-cover-1, .anim-cover-2, .anim-cover-3, .anim-cover-4 {
+    opacity: 1; animation: none;
+  }
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .slide__body,
+  .cols2,
+  .cols3,
+  .cols4,
+  .pos-cards,
+  .vocab,
+  .dont-list,
+  .logo-grid { grid-template-columns: 1fr }
+  .slide__body { padding: 3rem 2rem 4.5rem; gap: 2.5rem }
+  .content { padding: 4rem 2rem 5rem }
+  .topnav { padding: 0 1.5rem }
+  .topnav__links { display: none }
+  .circles { gap: 1.75rem }
+  .concentric { width: 260px; height: 260px }
+  .ring--1 { width: 260px; height: 260px }
+  .ring--2 { width: 211px; height: 211px }
+  .ring--3 { width: 146px; height: 146px }
+  .ring--4 { width: 82px; height: 82px; font-size: 0.5rem }
+  .oc-quote { padding: 2.5rem 2rem }
+  .cover-right { display: none }
+  .cover-monogram { display: none }
+  .pend-item { grid-template-columns: 2rem 1fr; gap: 1.25rem; padding: 1.5rem }
+  pre { font-size: 0.75rem; padding: 1.5rem }
+}
+
+</style>
+</head>
+<body>
+
+<!-- SUMMARY BACKDROP -->
+<div class="summary-backdrop" id="summaryBackdrop" aria-hidden="true"></div>
+
+<!-- SUMMARY PANEL -->
+<nav class="summary-panel" id="summaryPanel" aria-label="Sumário do documento">
+  <p class="summary-panel__title">Design System · 2026</p>
+  <a href="#pos">Posicionamento</a>
+  <a href="#voz">Identidade verbal</a>
+  <a href="#cores-fund">Cores fundamentais</a>
+  <a href="#cores-comp">Cores complementares</a>
+  <a href="#tipo">Tipografia</a>
+  <a href="#logo">Logotipo</a>
+  <a href="#harm">Harmonização</a>
+  <a href="#pend">Pendências</a>
+  <a href="#tokens">Tokens CSS</a>
+  <button class="summary-panel__close" id="summaryClose">Fechar</button>
+</nav>
+
+<!-- TOP NAV -->
+<nav class="topnav" role="navigation" aria-label="Navegação principal">
+  <span class="topnav__logo">SPA L'OCCITANE EN PROVENCE · Sais Hotel</span>
+  <div class="topnav__links" role="list">
+    <a href="#pos" role="listitem">Posicionamento</a>
+    <a href="#voz" role="listitem">Identidade verbal</a>
+    <a href="#cores-fund" role="listitem">Cores</a>
+    <a href="#tipo" role="listitem">Tipografia</a>
+    <a href="#logo" role="listitem">Logotipo</a>
+    <a href="#harm" role="listitem">Harmonização</a>
+    <a href="#pend" role="listitem">Pendências</a>
+  </div>
+  <button class="topnav__btn" id="summaryToggle" aria-expanded="false" aria-controls="summaryPanel">
+    Sumário
+  </button>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CAPA                                                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--noir" style="min-height: 100svh; min-height: 100vh">
+  <span class="accent-line"></span>
+  <div class="slide__kicker" style="margin-top: 36px">
+    <span>Design System · Spa</span>
+    <span>Sais Hotel · 2026</span>
+  </div>
+
+  <!-- Monograma watermark (decorativo) -->
+  <img
+    src="logos/Monograma.svg"
+    alt=""
+    aria-hidden="true"
+    class="cover-monogram"
+  />
+
+  <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; flex: 1; align-items: center; padding: 2rem 3rem 6rem; gap: 4rem">
+
+    <div class="cover-content" style="padding: 0">
+      <p class="cover-eyebrow anim-cover-1">Nos Codes &amp; Notre Culture · Atualização 2026</p>
+
+      <img
+        src="logos/Logotipo.svg"
+        alt="Spa L'Occitane en Provence"
+        class="cover-logo-img anim-cover-2"
+        loading="eager"
+        onerror="this.style.display='none'"
+      />
+
+      <h1 class="cover-title anim-cover-3">
+        Design<br>System<br>L'Occitane<br><em>en Provence</em>
+      </h1>
+
+      <p class="cover-desc anim-cover-4">
+        Cores, tipografia e logo agora seguem os códigos 2026 do Guia de Aplicações oficial da Maison.
+      </p>
+      <p class="cover-meta anim-cover-4">
+        Base: GUIA APLICAÇÕES OC.pdf · LOGOS/2026/
+      </p>
+    </div>
+
+    <div class="cover-right">
+      <img
+        src="logos/Monograma.svg"
+        alt=""
+        aria-hidden="true"
+        class="cover-right-monogram"
+      />
+    </div>
+  </div>
+
+  <span class="slide__num">01 / 09</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- POSICIONAMENTO                                                  -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--roussillon" id="pos">
+  <span class="accent-line"></span>
+  <div class="slide__kicker">
+    <span>Estratégia de marca</span><span>Posicionamento</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal">Posicio-<br>namento</h2>
+    <p class="slide__desc reveal" style="transition-delay:.12s">
+      A identidade do Spa não existe isolada — ela é a ponte entre o savoir-faire provençal da Maison e a hospitalidade alagoana do Sais. Cada decisão visual e verbal deve refletir essa fusão.
+    </p>
+  </div>
+  <span class="slide__num">02 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Proposta de valor central</h3>
+
+  <div class="oc-quote reveal">
+    "Para o hóspede do Sais que busca pausa e cuidado, o Spa L'Occitane en Provence é o espaço que traduz a Provença para a Ponta Verde — rituais sensoriais com ingredientes naturais da Haute-Provence, na medida certa entre o ritual francês e a hospitalidade alagoana."
+  </div>
+
+  <div class="pos-cards reveal">
+    <div class="pos-card">
+      <h4>Arquétipo primário — Amante</h4>
+      <p>Prazer sensorial, beleza natural, os cinco sentidos como linguagem: aroma de lavanda, calor do sol, textura da pedra.</p>
+    </div>
+    <div class="pos-card">
+      <h4>Arquétipo secundário — Sábio / Cuidador</h4>
+      <p>Savoir-faire provençal, herança, biodiversidade — cuidado genuíno, não spa genérico. Quase 50 anos de conhecimento.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem" class="reveal">
+    <p style="font-family: var(--oc-font-sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oc-text-muted); margin-bottom: 1rem">Posicionamento em uma frase</p>
+    <p style="font-family: var(--oc-font-serif); font-size: clamp(1.0625rem, 1.9vw, 1.3125rem); font-style: italic; color: var(--oc-text-body); line-height: 1.7; max-width: 68ch">
+      "O ritual de beleza natural que transporta a luz da Provence para a beira-mar, porque cada produto e cada gesto carrega quase 50 anos de saber-fazer da Haute-Provence."
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- IDENTIDADE VERBAL                                               -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--garrigue" id="voz">
+  <span class="accent-line"></span>
+  <div class="slide__kicker">
+    <span>Estratégia de marca</span><span>Identidade verbal</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal">Identi-<br>dade<br>verbal</h2>
+    <p class="slide__desc reveal" style="transition-delay:.12s">
+      Tom de voz, pilares e vocabulário que constroem a presença comunicacional do Spa em todos os pontos de contato.
+    </p>
+  </div>
+  <span class="slide__num">03 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Tom de voz &amp; vocabulário</h3>
+
+  <div class="reveal" style="margin-bottom: 3rem">
+    <div class="scale-row"><span class="scale-lbl">Contido</span><div class="scale-track"><span class="scale-dot" style="left:32%"></span></div><span class="scale-lbl r">Efusivo</span></div>
+    <div class="scale-row"><span class="scale-lbl">Sensorial</span><div class="scale-track"><span class="scale-dot" style="left:38%"></span></div><span class="scale-lbl r">Funcional</span></div>
+    <div class="scale-row"><span class="scale-lbl">Atemporal</span><div class="scale-track"><span class="scale-dot" style="left:8%"></span></div><span class="scale-lbl r">Tendência</span></div>
+    <div class="scale-row"><span class="scale-lbl">Caloroso</span><div class="scale-track"><span class="scale-dot" style="left:35%"></span></div><span class="scale-lbl r">Formal</span></div>
+  </div>
+
+  <div class="vocab reveal">
+    <div class="vocab-card use">
+      <h5>Usar</h5>
+      <p>ritual, gesto, savoir-faire, Haute-Provence, luz, aroma, pele, natural, herança, biodiversidade, contemplação, serenidade.</p>
+    </div>
+    <div class="vocab-card avoid">
+      <h5>Evitar</h5>
+      <p>"tratamento" isolado sem contexto sensorial, superlativos genéricos ("o melhor", "incrível"), tecnicismo de spa corporativo.</p>
+    </div>
+    <div class="vocab-card never">
+      <h5>Nunca</h5>
+      <p>"promoção", "oferta imperdível", "desconto", urgência de venda — a comunicação convida, não pressiona.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem" class="reveal">
+    <p style="font-family: var(--oc-font-sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oc-text-muted); margin-bottom: 1rem">Copy de assinatura</p>
+    <p style="font-family: var(--oc-font-serif); font-size: clamp(1.25rem, 2.5vw, 1.875rem); font-style: italic; color: var(--oc-text-ink)">"A luz da Provença, em ritual, à beira-mar."</p>
+  </div>
+
+  <div style="margin-top: 3rem" class="reveal">
+    <table>
+      <thead><tr><th>Pilar</th><th>Descrição</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Origem provençal</strong></td><td>Todo texto ancora um ingrediente, paisagem ou gesto da Haute-Provence (lavanda, oliveira, imortela, amêndoa).</td></tr>
+        <tr><td><strong>Ritual, não procedimento</strong></td><td>Descreve-se a experiência — o que se sente — nunca apenas a técnica.</td></tr>
+        <tr><td><strong>Luz e cor como atmosfera</strong></td><td>O vocabulário cromático (Soleil Jaune, Noir des Terres, Beige des Pierres) aparece também na escrita.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CORES FUNDAMENTAIS                                              -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--beige" id="cores-fund">
+  <span class="accent-line" style="background: var(--oc-noir-terres)"></span>
+  <div class="slide__kicker">
+    <span>Nosso legado e herança</span><span>Nossas cores</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal">Nossas<br>cores</h2>
+    <p class="slide__desc reveal" style="transition-delay:.12s">
+      Nossas cores emblemáticas são nosso brasão, carregando nossos valores, histórias e o espírito que nos distingue.
+    </p>
+  </div>
+  <span class="slide__num">04 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">As cores fundamentais da Maison</h3>
+  <p class="content__sub reveal">O branco não existe na Maison L'Occitane en Provence — ele é levemente queimado pela luz do sol da Haute-Provence. O preto é, na verdade, mais próximo a um marrom-acinzentado escuro, chamado Noir des Terres. O amarelo emblemático unifica e ilumina toda a paleta.</p>
+
+  <div class="cols2" style="gap: 4rem; align-items: center">
+    <div class="concentric-wrap">
+      <div class="concentric" id="concentricDiagram">
+        <div class="ring ring--1"><span class="ring-label rl-blanc">Blanc Brûlé</span></div>
+        <div class="ring ring--2"><span class="ring-label rl-beige">Beige des Pierres</span></div>
+        <div class="ring ring--3"><span class="ring-label rl-jaune" style="color: var(--oc-text-ink); font-size: 0.6rem; text-align: center; line-height: 1.4">Soleil Jaune<br>Provence</span></div>
+        <div class="ring ring--4">Noir des<br>Terres</div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2rem" class="reveal">
+      <div>
+        <p style="font-family: var(--oc-font-sans); font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 500; color: var(--oc-text-muted); margin-bottom: 0.5rem">Blanc Brûlé</p>
+        <p style="font-size: 0.9375rem; color: var(--oc-text-body); line-height: 1.7">O branco levemente queimado pela luz da Haute-Provence. Background de sites, apresentações e molduras.</p>
+      </div>
+      <div>
+        <p style="font-family: var(--oc-font-sans); font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 500; color: var(--oc-text-muted); margin-bottom: 0.5rem">Beige des Pierres</p>
+        <p style="font-size: 0.9375rem; color: var(--oc-text-body); line-height: 1.7">Como um alicerce — guia para tecidos, revestimentos e cenários fotográficos.</p>
+      </div>
+      <div>
+        <p style="font-family: var(--oc-font-sans); font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 500; color: #8B6500; margin-bottom: 0.5rem">Soleil Jaune Provence</p>
+        <p style="font-size: 0.9375rem; color: var(--oc-text-body); line-height: 1.7">O amarelo emblemático — uso dogmático e restrito. Nunca dominante. Ilumina todas as outras cores.</p>
+      </div>
+      <div>
+        <p style="font-family: var(--oc-font-sans); font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 500; color: var(--oc-text-ink); margin-bottom: 0.5rem">Noir des Terres</p>
+        <p style="font-size: 0.9375rem; color: var(--oc-text-body); line-height: 1.7">Cor do logotipo, títulos e sinalização. Substitui o antigo azul-escuro da Maison.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Uso das cores fundamentais</h3>
+  <p class="content__sub reveal">O Soleil Jaune Provence (código 7548C) deve ser respeitado de forma absoluta e dogmática — usado apenas em toques sublimados. O Noir des Terres substitui o antigo azul e é a cor associada ao logotipo.</p>
+
+  <div class="circles reveal" style="justify-content: center; gap: 3.5rem">
+    <div class="circle-item">
+      <div class="circle-wrap circle-wrap--lg"><div class="circle-swatch" style="background:#FFC700"></div></div>
+      <span class="circle-name">Soleil Jaune<br>Provence</span>
+      <span class="circle-hex">Pantone 7548C · #FFC700<br>CMYK 0/20/100/0</span>
+    </div>
+    <div class="circle-item">
+      <div class="circle-wrap circle-wrap--lg"><div class="circle-swatch" style="background:var(--oc-noir-terres)"></div></div>
+      <span class="circle-name">Noir des<br>Terres</span>
+      <span class="circle-hex">Pantone Black 5C · #3E2B2E<br>CMYK 57/68/53/68</span>
+    </div>
+    <div class="circle-item">
+      <div class="circle-wrap circle-wrap--lg"><div class="circle-swatch" style="background:var(--oc-beige-pierres)"></div></div>
+      <span class="circle-name">Beige des<br>Pierres</span>
+      <span class="circle-hex">Pantone 9224C · #F2E9DB<br>CMYK 6/8/16/0</span>
+    </div>
+    <div class="circle-item">
+      <div class="circle-wrap circle-wrap--lg"><div class="circle-swatch" style="background:var(--oc-blanc-brule); border: 1px solid rgba(62,43,46,0.10)"></div></div>
+      <span class="circle-name">Blanc<br>Brûlé</span>
+      <span class="circle-hex">#FBF9F6<br>CMYK 2/2/4/0</span>
+    </div>
+    <div class="circle-item">
+      <div class="circle-wrap circle-wrap--lg"><div class="circle-swatch" style="background:var(--oc-blanc-brule-moyen); border: 1px solid rgba(62,43,46,0.08)"></div></div>
+      <span class="circle-name">Blanc Brûlé<br>Moyen</span>
+      <span class="circle-hex">#F9F5F0<br>CMYK 3/4/7/0</span>
+    </div>
+  </div>
+
+  <table class="reveal" style="margin-top: 3rem">
+    <thead><tr><th>Token CSS</th><th>HEX</th><th>Pantone</th><th>Uso definido pelo brandbook</th></tr></thead>
+    <tbody>
+      <tr><td><code>--oc-soleil-jaune</code></td><td>#FFC700</td><td>7548C</td><td>Uso dogmático restrito — nunca dominante</td></tr>
+      <tr><td><code>--oc-noir-terres</code></td><td>#3E2B2E</td><td>Black 5C</td><td>Logotipo, títulos, sinalização — substitui azul antigo</td></tr>
+      <tr><td><code>--oc-beige-pierres</code></td><td>#F2E9DB</td><td>9224C</td><td>Tecidos, revestimentos, cenário fotográfico</td></tr>
+      <tr><td><code>--oc-blanc-brule</code></td><td>#FBF9F6</td><td>—</td><td>Background de sites, apresentações, molduras</td></tr>
+      <tr><td><code>--oc-blanc-brule-moyen</code></td><td>#F9F5F0</td><td>—</td><td>Fundo de fotos de produto</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CORES COMPLEMENTARES                                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--chant" id="cores-comp">
+  <span class="accent-line"></span>
+  <div class="slide__kicker">
+    <span>Nosso legado e herança</span><span>Nossas cores</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal">Cores<br>comple-<br>mentares</h2>
+    <p class="slide__desc reveal" style="transition-delay:.12s">
+      Inspiradas nas obras de Paul Cézanne, essas tonalidades evocam imagens da Haute-Provence — do verde-oliva das oliveiras à púrpura profunda da lavanda em flor.
+    </p>
+  </div>
+  <span class="slide__num">05 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Cores complementares da Maison</h3>
+  <p class="content__sub reveal">Todas as cores secundárias têm um toque de Soleil Jaune Provence. Usadas para criar mood em campanhas, desenvolver acessórios e orientar decisões do design durante sessões de fotos.</p>
+
+  <div class="circles reveal" style="flex-wrap: wrap; justify-content: center; gap: 2.5rem 3rem">
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-lichen)"></div></div><span class="circle-name">Lichen</span><span class="circle-hex">2318C · #9C774C</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-pierre-fontaine)"></div></div><span class="circle-name">Pierre de<br>Fontaine</span><span class="circle-hex">4047C · #A58671</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-terre-oxyde)"></div></div><span class="circle-name">Terre<br>d'Oxyde</span><span class="circle-hex">6034C · #A56E5C</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-roussillon-orageux)"></div></div><span class="circle-name">Roussillon<br>Orageux</span><span class="circle-hex">7600C · #8E4C43</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-lavande-valensolaire)"></div></div><span class="circle-name">Lavande<br>Valensolaire</span><span class="circle-hex">7645C · #5B3845</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-olivier-feuille)"></div></div><span class="circle-name">Olivier<br>Feuille</span><span class="circle-hex">4222C · #7D7C67</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-chant-grillon)"></div></div><span class="circle-name">Chant de<br>Grillon</span><span class="circle-hex">4187C · #738287</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-nuit-haute-provencale)"></div></div><span class="circle-name">Nuit Haute-<br>Provençale</span><span class="circle-hex">303C · #232B38</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-garrigue)"></div></div><span class="circle-name">Garrigue</span><span class="circle-hex">2409C · #53624B</span></div>
+    <div class="circle-item"><div class="circle-wrap"><div class="circle-swatch" style="background:var(--oc-verveine-soir)"></div></div><span class="circle-name">Verveine<br>au Soir</span><span class="circle-hex">5777C · #A2A468</span></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- TIPOGRAFIA                                                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--noir" id="tipo">
+  <span class="accent-line"></span>
+  <div class="slide__kicker">
+    <span>Nosso legado e herança</span><span>Nossas fontes</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal">Nossas<br>fontes</h2>
+    <p class="slide__desc reveal" style="transition-delay:.12s">
+      LOccitane Serif, LOccitane Serif Medium Condensed e LOccitane Sans — famílias oficiais da Maison, disponíveis localmente em Web Font Suite e Designer Font Suite.
+    </p>
+  </div>
+  <span class="slide__num">06 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Our fonts</h3>
+
+  <div class="type-specimen reveal">
+    <div class="type-specimen__label">
+      <span>LOccitane Serif — Display editorial</span>
+      <code>Regular · Italic · Bold · Bold Italic</code>
+    </div>
+    <div class="type-specimen__body">
+      <p style="font-family:var(--oc-font-serif);font-size:clamp(2.125rem,4.5vw,3.5rem);font-weight:400;color:var(--oc-text-ink);line-height:1.05;text-wrap:balance">We craft with heart &amp; reason<br>to become the flora virtuoso</p>
+      <p style="font-family:var(--oc-font-serif);font-size:clamp(1.375rem,2.5vw,2rem);font-weight:400;font-style:italic;color:var(--oc-text-muted);margin-top:1rem;line-height:1.25">We craft with heart &amp; reason to become the flora virtuoso</p>
+    </div>
+  </div>
+
+  <div class="type-specimen reveal">
+    <div class="type-specimen__label">
+      <span>LOccitane Serif Medium Condensed — Destaque em caixa-alta</span>
+      <code>Weight 500 · Títulos curtos, kickers</code>
+    </div>
+    <div class="type-specimen__body">
+      <p style="font-family:var(--oc-font-serif-condensed);font-size:clamp(2.25rem,5vw,4rem);font-weight:500;text-transform:uppercase;color:var(--oc-text-ink);line-height:0.92;letter-spacing:-0.01em">We Craft<br>With Heart<br>&amp; Reason<br>To Become<br>The Flora<br>Virtuoso</p>
+    </div>
+  </div>
+
+  <div class="type-specimen reveal">
+    <div class="type-specimen__label">
+      <span>LOccitane Sans — Texto corrido, UI, menus</span>
+      <code>Light · Regular · Italic · Medium · Bold · Bold Italic</code>
+    </div>
+    <div class="type-specimen__body">
+      <p style="font-family:var(--oc-font-sans);font-size:1.125rem;line-height:1.75;color:var(--oc-text-body);max-width:68ch">We craft with heart &amp; reason to become the flora virtuoso.</p>
+      <p style="font-family:var(--oc-font-sans);font-size:0.9375rem;line-height:1.8;color:var(--oc-text-body);max-width:65ch;margin-top:1rem">
+        We craft with heart &amp; reason to become the flora virtuoso. <em>We craft with heart &amp; reason.</em> <strong>We craft with heart &amp; reason.</strong>
+      </p>
+      <p style="font-family:var(--oc-font-sans);font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--oc-roussillon-orageux);margin-top:1.5rem">Spa L'Occitane en Provence · Sais Hotel · Ponta Verde, Maceió</p>
+    </div>
+  </div>
+
+  <table class="reveal" style="margin-top: 0.5rem">
+    <thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+    <tbody>
+      <tr><td><code>--oc-font-serif</code></td><td>'LOccitane Serif', Georgia, serif</td><td>Display editorial — títulos grandes, citações</td></tr>
+      <tr><td><code>--oc-font-serif-condensed</code></td><td>'LOccitane Serif Condensed', serif</td><td>Destaque condensado em caixa-alta</td></tr>
+      <tr><td><code>--oc-font-sans</code></td><td>'LOccitane Sans', system-ui, sans-serif</td><td>Texto corrido, UI, menus, legendas</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- LOGOTIPO                                                        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--beige" id="logo">
+  <span class="accent-line" style="background:var(--oc-noir-terres)"></span>
+  <div class="slide__kicker">
+    <span>Nosso legado e herança</span><span>Nosso logotipo</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal" style="color:var(--oc-text-ink)">Nosso<br>logo-<br>tipo</h2>
+    <p class="slide__desc reveal" style="color:rgba(62,43,46,0.68); transition-delay:.12s">
+      Nosso logotipo é um dos códigos fundamentais da Maison. Ele é atemporal e verdadeiro, sólido diante de tendências frágeis.
+    </p>
+  </div>
+  <span class="slide__num">07 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Uso do nosso logotipo</h3>
+  <p class="content__sub reveal">As cores do logotipo despertam seu significado quando associadas a esse código fundamental. Opte pela Noir des Terres ou Blanc Brûlé. A tonalidade Earthy Black substitui hoje nosso antigo azul-escuro.</p>
+
+  <div class="logo-grid reveal">
+    <div class="logo-cell">
+      <div class="stage beige">
+        <img src="logos/Logotipo.svg" alt="Logotipo Noir des Terres sobre Beige" loading="lazy" onerror="this.style.opacity=0">
+      </div>
+      <div class="cap">Noir des Terres — sobre Beige des Pierres</div>
+    </div>
+    <div class="logo-cell">
+      <div class="stage noir">
+        <img src="logos/Logotipo.svg" alt="Logotipo Beige sobre Noir" loading="lazy"
+             style="filter: brightness(0) invert(0.88) sepia(0.1)"
+             onerror="this.style.opacity=0">
+      </div>
+      <div class="cap">Beige travertin — sobre Noir des Terres</div>
+    </div>
+    <div class="logo-cell">
+      <div class="stage blanc">
+        <img src="logos/Logotipo.svg" alt="Logotipo sobre Blanc Brûlé" loading="lazy" onerror="this.style.opacity=0">
+      </div>
+      <div class="cap">Noir des Terres — sobre Blanc Brûlé</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem" class="reveal">
+    <p style="font-family: var(--oc-font-sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oc-text-muted); margin-bottom: 1.25rem">Don'ts do logotipo</p>
+    <ul class="dont-list">
+      <li>Rotacionar, distorcer ou condensar o logotipo</li>
+      <li>Omitir "EN PROVENCE"</li>
+      <li>Combinar com outras palavras</li>
+      <li>Aplicar sombra, contorno ou brilho</li>
+      <li>Colocar dentro de formas geométricas</li>
+      <li>Usar abaixo de 29mm sem versão "small logo"</li>
+    </ul>
+  </div>
+
+  <table class="reveal" style="margin-top: 2.5rem">
+    <thead><tr><th>Regra</th><th>Orientação</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Espaço de respiro</strong></td><td>Lateral = largura do "O"; topo/base = metade da altura do "O".</td></tr>
+      <tr><td><strong>Logo principal vs. menor</strong></td><td>Principal: ≥ 29mm. Menor ("small logo"): &lt; 29mm.</td></tr>
+      <tr><td><strong>Monograma "Lo"</strong></td><td>Marca registrada independente. Círculo 10mm principal / 6–10mm petit, nunca &lt; 5mm. Em relevo — nunca adesivo plano.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- HARMONIZAÇÃO                                                    -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--lavande" id="harm">
+  <span class="accent-line"></span>
+  <div class="slide__kicker">
+    <span>Implementação</span><span>Harmonização com o ds-sais</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal">Harmoni-<br>zação<br>ds-sais</h2>
+    <p class="slide__desc reveal" style="transition-delay:.12s">
+      O ds-sais é a base institucional do hotel. Para peças co-branded do Spa, os tokens OC substituem os equivalentes Domaine — sem criar uma identidade paralela.
+    </p>
+  </div>
+  <span class="slide__num">08 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Mapeamento ds-sais → OC</h3>
+
+  <table class="reveal">
+    <thead><tr><th>Papel</th><th>Token ds-sais</th><th>Token OC oficial (Spa)</th></tr></thead>
+    <tbody>
+      <tr><td>Cor escura / títulos</td><td><code>--sais-dark</code> #2B1A0D</td><td><code>--oc-noir-terres</code> #3E2B2E</td></tr>
+      <tr><td>Fundo claro / respiro</td><td><code>--sais-areia</code> #EBE3CF</td><td><code>--oc-beige-pierres</code> #F2E9DB</td></tr>
+      <tr><td>Background base</td><td><code>--sais-cream</code> #F5F0E4</td><td><code>--oc-blanc-brule</code> #FBF9F6</td></tr>
+      <tr><td>Destaque / acento</td><td><code>--sais-gold</code> #8B7240</td><td><code>--oc-soleil-jaune</code> #FFC700 (restrito)</td></tr>
+      <tr><td>Fonte display</td><td>Domaine Display</td><td><code>--oc-font-serif-condensed</code></td></tr>
+      <tr><td>Fonte corpo</td><td>Domaine Sans Text</td><td><code>--oc-font-sans</code></td></tr>
+      <tr><td>Border-radius</td><td>0 (retilíneo)</td><td>0 (mantido)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="harm-note reveal">
+    <strong>Atenção:</strong> Gold do Sais (#8B7240) e Soleil Jaune Provence (#FFC700) <strong>não são intercambiáveis</strong>. O amarelo OC é mais saturado e tem uso dogmático restrito — nunca como cor dominante de fundo ou texto. Nas peças do Spa, use Noir des Terres / Beige des Pierres como base e reserve #FFC700 para detalhes pontuais.
+  </div>
+
+  <div style="margin-top: 3rem" class="reveal">
+    <table>
+      <thead><tr><th>Aplicação</th><th>Orientação</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cardápio de serviços</strong></td><td>Migrar @font-face de Domaine → LOccitane Serif/Sans; trocar tokens locais pelos tokens OC.</td></tr>
+        <tr><td><strong>Sinalização física</strong></td><td>Noir des Terres gravado em relevo sobre Beige des Pierres, madeira ou pedra clara.</td></tr>
+        <tr><td><strong>Social media / digital</strong></td><td>Fundo Blanc Brûlé ou Beige des Pierres; título em LOccitane Serif; Soleil Jaune como toque pontual.</td></tr>
+        <tr><td><strong>Apresentações / PDFs</strong></td><td>Grid editorial — margem generosa, kicker em caixa-alta com tracking largo, título em serifa display.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PENDÊNCIAS                                                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--noir" id="pend">
+  <span class="accent-line"></span>
+  <div class="slide__kicker">
+    <span>Implementação</span><span>Pontos de atenção</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal">Pendên-<br>cias</h2>
+    <p class="slide__desc reveal" style="transition-delay:.12s">
+      Itens a validar ou solicitar à L'Occitane antes de produzir peças finais.
+    </p>
+  </div>
+  <span class="slide__num">09 / 09</span>
+</section>
+
+<div class="content">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Pontos de atenção</h3>
+
+  <div class="pend-list">
+    <div class="pend-item reveal">
+      <span class="n">01</span>
+      <div>
+        <strong>Falta o logotipo "SPA" empilhado</strong>
+        <p>Localmente só existem os arquivos <em>L'OCCITANE EN PROVENCE (without LO)</em>. O brandbook prevê versão <em>SPA / L'OCCITANE / EN PROVENCE</em> empilhada. Solicitar à L'Occitane ou recriar a partir do .ai.</p>
+      </div>
+    </div>
+    <div class="pend-item reveal">
+      <span class="n">02</span>
+      <div>
+        <strong>Divergência de nomenclatura nos arquivos atuais</strong>
+        <p>Arquivos usam "Beige travertin" e "Blanc brulé"; o brandbook 2026 nomeia "Beige des Pierres" e "Blanc Brûlé". Confirmar se os HEX são idênticos antes de declarar equivalência.</p>
+      </div>
+    </div>
+    <div class="pend-item reveal">
+      <span class="n">03</span>
+      <div>
+        <strong>Monograma "Lo" sem arquivo separado</strong>
+        <p>Não encontrado como .ai/.svg em LOGOS/2026/. Só existe ilustrado no PDF do brandbook. Solicitar arquivo vetorial à L'Occitane. <em>O SVG Monograma.svg disponível localmente é o símbolo completo — confirmar se é o "Lo" independente ou a assinatura completa.</em></p>
+      </div>
+    </div>
+    <div class="pend-item reveal">
+      <span class="n">04</span>
+      <div>
+        <strong>Fonte condensada sem versão web (.woff2)</strong>
+        <p><code>LOccitane Serif Medium Condensed</code> só existe em .ttf. Para uso em HTML otimizado, gerar .woff2 via conversor (ex.: fontsquirrel.com/tools/webfont-generator).</p>
+      </div>
+    </div>
+    <div class="pend-item reveal">
+      <span class="n">05</span>
+      <div>
+        <strong>Sem fotografia de ambiente do Spa Sais</strong>
+        <p>Só existem still de produto e modelos genéricos da Maison. Para peças "in loco" será necessária produção fotográfica no espaço do Spa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- TOKENS CSS                                                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="slide slide--beige" id="tokens">
+  <span class="accent-line" style="background:var(--oc-noir-terres)"></span>
+  <div class="slide__kicker">
+    <span>Implementação</span><span>Tokens CSS</span>
+  </div>
+  <div class="slide__body">
+    <h2 class="slide__title reveal" style="color:var(--oc-text-ink)">Tokens<br>CSS</h2>
+    <p class="slide__desc reveal" style="color:rgba(62,43,46,0.68); transition-delay:.12s">
+      Arquivo: <strong>oc-spa-tokens.css</strong> — importar após sais-tokens.css em qualquer HTML do Spa para ativar fontes e cores OC oficiais.
+    </p>
+  </div>
+</section>
+
+<div class="content" style="border-bottom:none">
+  <span class="accent-line"></span>
+  <h3 class="content__headline reveal">Tokens de referência</h3>
+
+  <pre class="reveal">/* Cores fundamentais */
+--oc-soleil-jaune:      #FFC700;  /* Pantone 7548C — uso restrito */
+--oc-noir-terres:       #3E2B2E;  /* Pantone Black 5C            */
+--oc-beige-pierres:     #F2E9DB;  /* Pantone 9224C               */
+--oc-blanc-brule:       #FBF9F6;
+--oc-blanc-brule-moyen: #F9F5F0;
+
+/* Tipografia oficial */
+--oc-font-serif:           'LOccitane Serif', Georgia, serif;
+--oc-font-serif-condensed: 'LOccitane Serif Condensed', serif;
+--oc-font-sans:            'LOccitane Sans', system-ui, sans-serif;
+
+/* Complementares */
+--oc-lichen:               #9C774C;
+--oc-pierre-fontaine:      #A58671;
+--oc-terre-oxyde:          #A56E5C;
+--oc-roussillon-orageux:   #8E4C43;
+--oc-lavande-valensolaire: #5B3845;
+--oc-olivier-feuille:      #7D7C67;
+--oc-chant-grillon:        #738287;
+--oc-nuit-haute-provencale:#232B38;
+--oc-garrigue:             #53624B;
+--oc-verveine-soir:        #A2A468;</pre>
+</div>
+
+
+<footer>
+  Documento de referência interna · Spa L'Occitane en Provence @ Sais Hotel · Não indexar · 2026
+</footer>
+
+
+<script>
+(function () {
+  "use strict";
+
+  // ── Summary panel ─────────────────────────────────────────────
+  const toggleBtn  = document.getElementById("summaryToggle");
+  const panel      = document.getElementById("summaryPanel");
+  const backdrop   = document.getElementById("summaryBackdrop");
+  const closeBtn   = document.getElementById("summaryClose");
+
+  function openPanel() {
+    panel.classList.add("is-open");
+    backdrop.classList.add("is-open");
+    toggleBtn.setAttribute("aria-expanded", "true");
+    closeBtn.focus();
+  }
+  function closePanel() {
+    panel.classList.remove("is-open");
+    backdrop.classList.remove("is-open");
+    toggleBtn.setAttribute("aria-expanded", "false");
+    toggleBtn.focus();
+  }
+
+  toggleBtn.addEventListener("click", function () {
+    panel.classList.contains("is-open") ? closePanel() : openPanel();
+  });
+  closeBtn.addEventListener("click", closePanel);
+  backdrop.addEventListener("click", closePanel);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && panel.classList.contains("is-open")) closePanel();
+  });
+
+  // Close panel on link click (mobile)
+  panel.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", closePanel);
+  });
+
+  // ── Scroll-reveal ──────────────────────────────────────────────
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reducedMotion) {
+    var revealEls = document.querySelectorAll(".reveal, .reveal-up");
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function (el) { revealObs.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal, .reveal-up").forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
+  // ── Concentric ring reveal ────────────────────────────────────
+  var concentric = document.getElementById("concentricDiagram");
+  if (concentric) {
+    var ringObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          ringObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    ringObs.observe(concentric);
+  }
+
+  // ── Nav active section ────────────────────────────────────────
+  var sectionEls = document.querySelectorAll("section[id], div[id]");
+  var navLinks   = document.querySelectorAll(".topnav__links a, .summary-panel a");
+
+  var activeObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        navLinks.forEach(function (l) { l.classList.remove("active"); });
+        var selector = '.topnav__links a[href="#' + e.target.id + '"], .summary-panel a[href="#' + e.target.id + '"]';
+        document.querySelectorAll(selector).forEach(function (l) { l.classList.add("active"); });
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sectionEls.forEach(function (s) { activeObs.observe(s); });
+
+})();
+</script>
+</body>
+</html>
+
