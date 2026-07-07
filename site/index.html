@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Sais Beach Living Hotel | Pajuçara, Maceió — Frente Mar</title>
 <meta name="description" content="Hospedagem à beira-mar em Pajuçara, Maceió, em frente às piscinas naturais. Rooftop 360°, gastronomia autoral e acomodações com vista mar. Conheça o Sais."/>
+<link rel="stylesheet" href="css/lenis.css"/>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -58,6 +59,20 @@
   </div>
 </section>
 
+<!-- ── A DEZ PASSOS ─────────────────────────────────────── -->
+<section class="section" id="dez-passos">
+  <div class="split">
+    <div class="split__media" data-reveal>
+      <img src="imgs/historia-mar.jpg" alt="Piscina do Sais de frente para o mar da Pajuçara"/>
+    </div>
+    <div class="split__content" data-reveal>
+      <span class="s-eyebrow">A dez passos</span>
+      <h2 class="s-title">A água que começa no mar <em>e sobe com você.</em></h2>
+      <p class="s-text">As piscinas naturais da Pajuçara abrem a dez passos da porta. Lá dentro, a água acompanha cada andar — a do rooftop ao entardecer, a do lazer de frente pro azul, a raia para o seu treino. O mar em todos os níveis.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ── ROOFTOP PANORÂMICO ───────────────────────────────── -->
 <section class="feature-bg" id="rooftop">
   <video class="feature-bg__media" id="rooftopVideo" poster="imgs/rooftop-sunset-poster.jpg" muted loop playsinline preload="none" aria-hidden="true">
@@ -82,7 +97,7 @@
       </div>
     </div>
     <div class="carousel-wrap" data-reveal>
-      <div class="acom-carousel carousel-track" id="acomTrack" role="region" aria-label="Categorias de acomodação" tabindex="0">
+      <div class="acom-carousel carousel-track" id="acomTrack" role="region" aria-label="Categorias de acomodação" tabindex="0" data-lenis-prevent>
         <article class="gcard">
           <div class="gcard__media">
             <img src="imgs/acom-frentemar.jpg" alt="Categoria Frente Mar" loading="lazy"/>
@@ -137,15 +152,15 @@
   </div>
 </section>
 
-<!-- ── FLOR DE SAL — café da manhã Frente Mar ──────────── -->
+<!-- ── FLOR DE SAL BISTRÔ & BAR ─────────────────────────── -->
 <section class="feature-bg" id="flordesal">
-  <img class="feature-bg__media" src="imgs/historia-mar.jpg" alt="Vista mar da Pajuçara ao amanhecer"/>
+  <img class="feature-bg__media" src="imgs/flordesal-ambiente.jpg" alt="Ambiente intimista do Flor de Sal Bistrô & Bar"/>
   <div class="feature-bg__multiply"></div>
   <div class="feature-bg__scrim"></div>
   <div class="feature-bg__inner">
-    <span class="s-eyebrow" data-reveal>Flor de Sal</span>
-    <h2 class="s-title" data-reveal>O café da manhã reservado a quem já acorda de frente para o mar.</h2>
-    <p class="s-text" data-reveal>No Flor de Sal, a manhã é servida com calma — pão quente, café coado e a vista da Pajuçara emoldurando a mesa. Uma exclusividade da categoria Frente Mar, mediante agendamento com o concierge. Ao longo do dia, o Flor de Sal segue aberto para almoço e jantar, com a cozinha nordestina contemporânea assinada pelo chef Wanderson Medeiros, o Picuí.</p>
+    <span class="s-eyebrow" data-reveal>Flor de Sal Bistrô &amp; Bar</span>
+    <h2 class="s-title" data-reveal>Durante sua estada, descubra o restaurante assinado pelo Chef Wanderson Medeiros.</h2>
+    <p class="s-text" data-reveal>No Flor de Sal, a gastronomia contemporânea valoriza os sabores do Nordeste em um ambiente intimista, com vista privilegiada para as piscinas naturais de Pajuçara.</p>
   </div>
 </section>
 
@@ -158,8 +173,8 @@
         <a class="btn btn--outline" href="fitness-wellness.html">Ver Fitness &amp; Wellness</a>
       </div>
     </div>
-    <div class="cards-grid cards-grid--2" data-reveal>
-      <article class="fit-item">
+    <div class="cards-grid cards-grid--2">
+      <article class="fit-item" data-reveal>
         <div class="fit-item__media">
           <img src="imgs/fit-academia.jpg" alt="Academia do Sais — Andar Lazer" loading="lazy"/>
         </div>
@@ -168,7 +183,7 @@
           <p class="fit-item__desc">Equipamentos completos para treino de força e cardio, com janelas amplas voltadas para o litoral de Pajuçara — treinar de frente para o mar, em qualquer horário do dia.</p>
         </div>
       </article>
-      <article class="fit-item">
+      <article class="fit-item" data-reveal>
         <div class="fit-item__media">
           <img src="imgs/fit-sauna-placeholder.jpg" alt="Sauna — Andar Lazer" loading="lazy"/>
         </div>
@@ -181,24 +196,36 @@
   </div>
 </section>
 
+<!-- ── MACEIÓ / ALAGOAS ─────────────────────────────────── -->
+<section class="feature-bg" id="alagoas">
+  <img class="feature-bg__media" src="imgs/alagoas.jpg" alt="Piscinas naturais da Pajuçara, Maceió"/>
+  <div class="feature-bg__multiply"></div>
+  <div class="feature-bg__scrim"></div>
+  <div class="feature-bg__inner">
+    <span class="s-eyebrow" data-reveal>Alagoas</span>
+    <h2 class="s-title" data-reveal>Maceió começa <em>na porta.</em></h2>
+    <p class="s-text" data-reveal>Piscinas naturais, Pontal da Barra, a Praia do Gunga, a feirinha de artesanato. O melhor do litoral alagoano a poucos minutos.</p>
+  </div>
+</section>
+
 <!-- ── 05 DEPOIMENTOS ──────────────────────────────────── -->
 <section class="section section--white" id="depoimentos">
   <div class="container">
     <div class="section-head">
       <h2 class="s-title" data-reveal>O que dizem sobre estar no Sais.</h2>
     </div>
-    <div class="testi-grid" data-reveal>
-      <article class="testi-card testi-card--pending">
+    <div class="testi-grid">
+      <article class="testi-card testi-card--pending" data-reveal>
         <span class="testi-card__stars" aria-hidden="true">★★★★★</span>
         <p class="testi-card__quote">[Depoimento pendente — aguardando validação de hóspede real antes da publicação.]</p>
         <p class="testi-card__meta"><b>—</b>Categoria a confirmar</p>
       </article>
-      <article class="testi-card testi-card--pending">
+      <article class="testi-card testi-card--pending" data-reveal>
         <span class="testi-card__stars" aria-hidden="true">★★★★★</span>
         <p class="testi-card__quote">[Depoimento pendente — aguardando validação de hóspede real antes da publicação.]</p>
         <p class="testi-card__meta"><b>—</b>Categoria a confirmar</p>
       </article>
-      <article class="testi-card testi-card--pending">
+      <article class="testi-card testi-card--pending" data-reveal>
         <span class="testi-card__stars" aria-hidden="true">★★★★★</span>
         <p class="testi-card__quote">[Depoimento pendente — aguardando validação de hóspede real antes da publicação.]</p>
         <p class="testi-card__meta"><b>—</b>Categoria a confirmar</p>
@@ -210,11 +237,11 @@
 <!-- ── 06 GASTRONOMIA (preview) ────────────────────────── -->
 <section class="section section--alt" id="gastronomia">
   <div class="container" style="margin-bottom:2.5rem">
-    <h2 class="s-title" data-reveal>Dois endereços para comer bem, sem sair do Sais.</h2>
+    <h2 class="s-title" data-reveal>Dois endereços para comer bem,<br>sem sair do Sais.</h2>
   </div>
   <div class="dining">
     <div class="dining__media" data-reveal>
-      <img src="imgs/gastro-flordesal.jpg" alt="Gastronomia autoral do Flor de Sal"/>
+      <img src="imgs/gastro-cafedamanha.jpg" alt="Café da manhã no Sais Beach Living Hotel"/>
     </div>
     <div class="dining__card" data-reveal>
       <p class="s-text" style="max-width:none">No Restaurante Lobby, o dia a dia da hospedagem — café da manhã, almoço e jantar para todos os hóspedes. No Flor de Sal, a cozinha nordestina contemporânea assinada pelo chef Wanderson Medeiros, o Picuí.</p>
@@ -270,6 +297,7 @@
 
 </main>
 
+<script src="js/vendor/lenis.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

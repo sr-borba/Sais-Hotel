@@ -1,5 +1,25 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ── Lenis: scroll suave/inercial (igual à referência), desativado ──
+// ── automaticamente se o usuário preferir menos movimento.          ──
+let lenis = null;
+if (!prefersReducedMotion && window.Lenis) {
+  lenis = new Lenis({ duration: 1.1, smoothWheel: true, touchMultiplier: 1.1 });
+  const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
+  requestAnimationFrame(raf);
+
+  // Links de âncora usam o mesmo scroll suave do Lenis, não o salto nativo
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      const target = id.length > 1 ? document.querySelector(id) : document.body;
+      if (!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: -68 });
+    });
+  });
+}
+
 // ── Mobile menu ─────────────────────────────────────────
 const burger = document.getElementById('navBurger');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -52,8 +72,7 @@ if (deferredVideos.length) {
   deferredVideos.forEach(v => videoObs.observe(v));
 }
 
-// ── Carousel: arraste com mouse (desktop). Sem sequestro de wheel — ──
-// ── rolagem vertical da página nunca é interceptada pelo carrossel. ──
+// ── Carousel: arraste com mouse (desktop) ───────────────────────────
 document.querySelectorAll('.testi-track, .carousel-track').forEach(track => {
   let isDown = false, startX, scrollStart;
   track.addEventListener('mousedown', e => {
@@ -74,6 +93,32 @@ document.querySelectorAll('.testi-track, .carousel-track').forEach(track => {
     if (e.key === 'ArrowRight') { e.preventDefault(); track.scrollBy({ left: step, behavior: prefersReducedMotion ? 'auto' : 'smooth' }); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); track.scrollBy({ left: -step, behavior: prefersReducedMotion ? 'auto' : 'smooth' }); }
   });
+
+  // ── Mouse sobre o carrossel: wheel rola na horizontal; ao chegar no ──
+  // ── início/fim, devolve o controle para o scroll normal da página. ──
+  track.addEventListener('wheel', e => {
+    const isHorizontal = getComputedStyle(track).overflowX === 'auto' && track.scrollWidth > track.clientWidth;
+    if (!isHorizontal) return; // lista vertical no mobile: scroll da página normalmente
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // gesto já horizontal: deixa o navegador cuidar
+
+    const max = track.scrollWidth - track.clientWidth;
+    const atStart = track.scrollLeft <= 1;
+    const atEnd = track.scrollLeft >= max - 1;
+    const goingForward = e.deltaY > 0;
+    if ((goingForward && atEnd) || (!goingForward && atStart)) return; // no limite: página assume o scroll
+
+    e.preventDefault();
+    // scroll-snap briga com incrementos pixel a pixel (o navegador "puxa" de volta
+    // pro card mais próximo) — por isso avançamos um card inteiro por gesto, com
+    // um cooldown pra não disparar várias vezes durante a mesma rolagem contínua.
+    if (track.dataset.wheeling) return;
+    track.dataset.wheeling = '1';
+    const card = track.querySelector('.gcard');
+    const gap = 24;
+    const step = card ? card.getBoundingClientRect().width + gap : 360;
+    track.scrollBy({ left: goingForward ? step : -step, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    setTimeout(() => { delete track.dataset.wheeling; }, 500);
+  }, { passive: false });
 });
 
 document.querySelectorAll('.carousel-btn').forEach(btn => {
@@ -88,7 +133,14 @@ document.querySelectorAll('.carousel-btn').forEach(btn => {
   });
 });
 
-// ── Scroll reveal ───────────────────────────────────────
+// ── Scroll reveal, com stagger sequencial dentro de cada grid ──
+// ── (30-50ms por item, como o Framer Motion whileInView da referência) ──
+document.querySelectorAll('.cards-grid, .testi-grid').forEach(grid => {
+  [...grid.children].forEach((child, i) => {
+    if (child.hasAttribute('data-reveal')) child.style.transitionDelay = `${Math.min(i * 60, 240)}ms`;
+  });
+});
+
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -99,22 +151,31 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
 
-// ── Scroll: nav "scrolled" + parallax leve do hero, em um único rAF ──
+// ── Scroll: nav "scrolled" + parallax do hero e das seções feature-bg, ──
+// ── tudo num único loop (Lenis quando ativo, senão scroll nativo)      ──
 const nav = document.getElementById('nav');
 const heroImg = document.querySelector('.hero-img');
-if (nav || (heroImg && !prefersReducedMotion)) {
-  let ticking = false;
-  const onScroll = () => {
-    const y = window.scrollY;
+const parallaxMedia = document.querySelectorAll('.feature-bg__media');
+if (nav || (!prefersReducedMotion && (heroImg || parallaxMedia.length))) {
+  const update = y => {
     if (nav) nav.classList.toggle('scrolled', y > 60);
-    if (heroImg && !prefersReducedMotion) {
-      heroImg.style.transform = `scale(1.08) translateY(${y * 0.12}px)`;
+    if (!prefersReducedMotion) {
+      if (heroImg) heroImg.style.transform = `scale(1.08) translateY(${y * 0.12}px)`;
+      parallaxMedia.forEach(media => {
+        const rect = media.closest('.feature-bg').getBoundingClientRect();
+        const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.15;
+        media.style.transform = `translateY(${offset}px) scale(1.12)`;
+      });
     }
-    ticking = false;
   };
-  const requestTick = () => {
-    if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
-  };
-  window.addEventListener('scroll', requestTick, { passive: true });
-  onScroll();
+  if (lenis) {
+    lenis.on('scroll', ({ scroll }) => update(scroll));
+  } else {
+    let ticking = false;
+    const onScroll = () => { update(window.scrollY); ticking = false; };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+    }, { passive: true });
+  }
+  update(window.scrollY);
 }

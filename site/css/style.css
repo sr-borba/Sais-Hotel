@@ -168,7 +168,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
 .hero-inner{
   position:relative;z-index:1;height:100%;
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 clamp(1.5rem,5vw,4rem) clamp(3rem,7vh,5rem);
+  padding:0 clamp(1.5rem,4vw,3rem) clamp(3rem,7vh,5rem);
 }
 .eyebrow-hero{
   font-size:0.6875rem;letter-spacing:0.2em;text-transform:uppercase;
@@ -201,6 +201,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
 }
 .feature-bg__media{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  will-change:transform;
 }
 .feature-bg__multiply{position:absolute;inset:0;background:#000;mix-blend-mode:multiply;opacity:.4}
 .feature-bg__scrim{
@@ -209,7 +210,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
 }
 .feature-bg__inner{
   position:relative;z-index:1;max-width:640px;
-  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
+  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem);
 }
 .feature-bg .s-eyebrow{color:rgba(235,227,207,.8)}
 .feature-bg .s-title{color:#FAF7F2}
@@ -231,7 +232,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
 .btn--wa:hover{background:#1EBF5A}
 
 /* ── LAYOUT HELPERS ─────────────────────────────────── */
-.container{max-width:var(--container);margin:0 auto;padding:0 clamp(1.5rem,4vw,3rem)}
+.container{width:100%;margin:0;padding:0 clamp(1.5rem,4vw,3rem)}
 .section{padding:clamp(4rem,8vh,7rem) 0}
 .section--alt{background:var(--bg-alt)}
 .section--white{background:#FFFFFF}
@@ -245,7 +246,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
   color:var(--text);line-height:1.1;letter-spacing:-0.025em;margin-bottom:1.25rem;
   text-wrap:balance;
 }
-.s-title em{font-style:normal;color:var(--gold)}
+.s-title em{font-style:italic;color:var(--gold)}
 .s-text{
   font-size:clamp(.9375rem,1.5vw,1.0625rem);color:var(--text-mid);line-height:1.65;
   font-weight:400;max-width:52ch;
@@ -263,6 +264,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
   display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;
   margin-bottom:2.5rem;
 }
+#depoimentos .section-head{display:block;text-align:center}
 .section-head .s-text{max-width:44ch}
 
 /* ── SPLIT SECTION ──────────────────────────────────── */
@@ -271,7 +273,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
 .split--reverse>*{direction:ltr}
 .split__media{overflow:hidden;min-height:440px;position:relative}
 .split__media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.split__content{display:flex;flex-direction:column;justify-content:center;padding:clamp(3rem,6vw,5rem) clamp(2rem,5vw,4.5rem);background:var(--bg-alt)}
+.split__content{display:flex;flex-direction:column;justify-content:center;padding:clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem);background:var(--bg-alt)}
 
 /* ── CARDS GRID (genérico) ───────────────────────────── */
 .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -281,7 +283,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
 .carousel-wrap{position:relative}
 .acom-carousel{
   display:flex;gap:1.5rem;
-  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
   scrollbar-width:none;cursor:grab;
   margin:0 clamp(-1.5rem,-4vw,-3rem);padding:0 clamp(1.5rem,4vw,3rem);
 }
@@ -385,7 +388,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
     transition-duration:.01ms!important;scroll-behavior:auto!important;
   }
   html{scroll-behavior:auto}
-  .hero-img{transform:none!important}
+  .hero-img,.feature-bg__media{transform:none!important}
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────── */
@@ -407,7 +410,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
   /* Acomodações: carrossel vira lista vertical (mesma faixa em que o nav vira hambúrguer) */
   .acom-carousel{
     flex-direction:column;
-    overflow-x:visible;scroll-snap-type:none;
+    overflow-x:visible;overflow-y:visible;scroll-snap-type:none;
     cursor:auto;
     margin:0;padding:0;
   }
