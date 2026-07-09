@@ -279,29 +279,14 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
 .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .cards-grid--2{grid-template-columns:repeat(2,1fr)}
 
-/* ── ACOMODAÇÕES — carrossel, foto em destaque ───────── */
-.carousel-wrap{position:relative}
-.acom-carousel{
-  display:flex;gap:1.5rem;
-  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;
-  overscroll-behavior:contain;
-  scrollbar-width:none;cursor:grab;
-  margin:0 clamp(-1.5rem,-4vw,-3rem);padding:0 clamp(1.5rem,4vw,3rem);
-}
-.acom-carousel:active{cursor:grabbing}
-.acom-carousel::-webkit-scrollbar{display:none}
-.acom-carousel:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.carousel-nav{display:flex;gap:.75rem;margin-top:1.5rem;padding:0 clamp(1.5rem,4vw,3rem)}
-.carousel-btn{
-  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-  border:1px solid var(--border-md);color:var(--text-mid);font-size:1rem;
-  transition:background var(--tr-fast),color var(--tr-fast),border-color var(--tr-fast);background:var(--bg-card);
-}
-.carousel-btn:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+/* ── ACOMODAÇÕES — carrossel (Splide.js) ─────────────── */
+.acom-splide{margin:0 clamp(-1.5rem,-4vw,-3rem);padding:0 clamp(1.5rem,4vw,3rem)}
+.acom-splide .splide__track{overflow:hidden}
+.acom-splide .splide__slide{height:auto}
+.acom-splide .splide__slide:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .gcard{
-  flex:0 0 clamp(280px,44%,520px);scroll-snap-align:start;flex-shrink:0;
   background:transparent;overflow:hidden;
-  display:flex;flex-direction:column;
+  display:flex;flex-direction:column;height:100%;
 }
 .gcard__media{position:relative;height:clamp(340px,32vw,460px);overflow:hidden;flex-shrink:0}
 .gcard__media img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
@@ -406,17 +391,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
   .testi-grid{grid-template-columns:1fr}
   .footer__grid{grid-template-columns:1fr 1fr;gap:2rem}
   .dining__card{margin-top:-2rem;margin-right:0;max-width:none}
-
-  /* Acomodações: carrossel vira lista vertical (mesma faixa em que o nav vira hambúrguer) */
-  .acom-carousel{
-    flex-direction:column;
-    overflow-x:visible;overflow-y:visible;scroll-snap-type:none;
-    cursor:auto;
-    margin:0;padding:0;
-  }
-  .acom-carousel .gcard{flex:none;width:100%}
-  .acom-carousel .gcard__media{height:min(64vw,420px)}
-  .carousel-nav{display:none}
 }
 @media(max-width:600px){
   .hero-h1{font-size:clamp(2.25rem,10vw,3.5rem)}
@@ -429,5 +403,4 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;color:inhe
   .cards-grid,.cards-grid--2{gap:1.25rem}
   .split__content{padding:2.5rem 1.5rem}
   .split__media,.split{min-height:280px}
-  .acom-carousel .gcard__media{height:64vw}
 }

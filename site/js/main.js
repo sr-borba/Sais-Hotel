@@ -72,66 +72,29 @@ if (deferredVideos.length) {
   deferredVideos.forEach(v => videoObs.observe(v));
 }
 
-// ── Carousel: arraste com mouse (desktop) ───────────────────────────
-document.querySelectorAll('.testi-track, .carousel-track').forEach(track => {
-  let isDown = false, startX, scrollStart;
-  track.addEventListener('mousedown', e => {
-    isDown = true; startX = e.pageX; scrollStart = track.scrollLeft;
-    track.style.userSelect = 'none';
-  });
-  window.addEventListener('mouseup', () => { isDown = false; track.style.userSelect = ''; });
-  window.addEventListener('mousemove', e => {
-    if (!isDown) return;
-    track.scrollLeft = scrollStart - (e.pageX - startX);
-  });
-
-  // ── Teclado: setas esquerda/direita rolam o carrossel focado ──
-  track.addEventListener('keydown', e => {
-    const card = track.querySelector('.gcard, .testi-card');
-    const gap = 24;
-    const step = card ? (card.getBoundingClientRect().width + gap) : 360;
-    if (e.key === 'ArrowRight') { e.preventDefault(); track.scrollBy({ left: step, behavior: prefersReducedMotion ? 'auto' : 'smooth' }); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); track.scrollBy({ left: -step, behavior: prefersReducedMotion ? 'auto' : 'smooth' }); }
-  });
-
-  // ── Mouse sobre o carrossel: wheel rola na horizontal; ao chegar no ──
-  // ── início/fim, devolve o controle para o scroll normal da página. ──
-  track.addEventListener('wheel', e => {
-    const isHorizontal = getComputedStyle(track).overflowX === 'auto' && track.scrollWidth > track.clientWidth;
-    if (!isHorizontal) return; // lista vertical no mobile: scroll da página normalmente
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // gesto já horizontal: deixa o navegador cuidar
-
-    const max = track.scrollWidth - track.clientWidth;
-    const atStart = track.scrollLeft <= 1;
-    const atEnd = track.scrollLeft >= max - 1;
-    const goingForward = e.deltaY > 0;
-    if ((goingForward && atEnd) || (!goingForward && atStart)) return; // no limite: página assume o scroll
-
-    e.preventDefault();
-    // scroll-snap briga com incrementos pixel a pixel (o navegador "puxa" de volta
-    // pro card mais próximo) — por isso avançamos um card inteiro por gesto, com
-    // um cooldown pra não disparar várias vezes durante a mesma rolagem contínua.
-    if (track.dataset.wheeling) return;
-    track.dataset.wheeling = '1';
-    const card = track.querySelector('.gcard');
-    const gap = 24;
-    const step = card ? card.getBoundingClientRect().width + gap : 360;
-    track.scrollBy({ left: goingForward ? step : -step, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    setTimeout(() => { delete track.dataset.wheeling; }, 500);
-  }, { passive: false });
-});
-
-document.querySelectorAll('.carousel-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const track = document.getElementById(btn.dataset.track);
-    if (!track) return;
-    const dir = parseInt(btn.dataset.dir, 10);
-    const card = track.querySelector('.gcard, .testi-card');
-    const gap = 24;
-    const step = card ? (card.getBoundingClientRect().width + gap) : 360;
-    track.scrollBy({ left: dir * step, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-  });
-});
+// ── Carousel de acomodações: Splide.js ──────────────────────────────
+// ── Lib madura (arraste, wheel, teclado, acessibilidade e o "release" ──
+// ── de scroll no limite já resolvidos por ela, testados em produção  ──
+// ── — em vez de reimplementar isso na mão de novo).                  ──
+const acomSplideEl = document.getElementById('acomSplide');
+if (acomSplideEl && window.Splide) {
+  new Splide(acomSplideEl, {
+    type: 'slide',
+    perPage: 2.3,
+    gap: '1.5rem',
+    padding: 0,
+    arrows: false,
+    pagination: false,
+    drag: false, // DESATIVADO temporariamente p/ diagnóstico
+    wheel: false, // DESATIVADO temporariamente p/ diagnóstico
+    keyboard: 'global',
+    speed: prefersReducedMotion ? 0 : 400,
+    breakpoints: {
+      1080: { perPage: 1.15 },
+      600: { perPage: 1.05 },
+    },
+  }).mount();
+}
 
 // ── Scroll reveal, com stagger sequencial dentro de cada grid ──
 // ── (30-50ms por item, como o Framer Motion whileInView da referência) ──

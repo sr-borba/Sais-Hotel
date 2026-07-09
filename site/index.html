@@ -6,6 +6,7 @@
 <title>Sais Beach Living Hotel | Pajuçara, Maceió — Frente Mar</title>
 <meta name="description" content="Hospedagem à beira-mar em Pajuçara, Maceió, em frente às piscinas naturais. Rooftop 360°, gastronomia autoral e acomodações com vista mar. Conheça o Sais."/>
 <link rel="stylesheet" href="css/lenis.css"/>
+<link rel="stylesheet" href="css/splide-core.min.css"/>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -96,57 +97,65 @@
         <a class="btn btn--outline" href="acomodacoes.html">Ver todas as acomodações</a>
       </div>
     </div>
-    <div class="carousel-wrap" data-reveal>
-      <div class="acom-carousel carousel-track" id="acomTrack" role="region" aria-label="Categorias de acomodação" tabindex="0" data-lenis-prevent>
-        <article class="gcard">
-          <div class="gcard__media">
-            <img src="imgs/acom-frentemar.jpg" alt="Categoria Frente Mar" loading="lazy"/>
-          </div>
-          <div class="gcard__body">
-            <h3 class="gcard__name">Frente Mar</h3>
-            <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
-          </div>
-        </article>
-        <article class="gcard">
-          <div class="gcard__media">
-            <img src="imgs/acom-lateralmar.jpg" alt="Categoria Lateral Mar" loading="lazy"/>
-          </div>
-          <div class="gcard__body">
-            <h3 class="gcard__name">Lateral Mar</h3>
-            <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
-          </div>
-        </article>
-        <article class="gcard">
-          <div class="gcard__media">
-            <img src="imgs/acom-standard.jpg" alt="Categoria Standard" loading="lazy"/>
-          </div>
-          <div class="gcard__body">
-            <h3 class="gcard__name">Standard</h3>
-            <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
-          </div>
-        </article>
-        <article class="gcard">
-          <div class="gcard__media">
-            <img src="imgs/acom-superior.jpg" alt="Categoria Superior" loading="lazy"/>
-          </div>
-          <div class="gcard__body">
-            <h3 class="gcard__name">Superior</h3>
-            <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
-          </div>
-        </article>
-        <article class="gcard">
-          <div class="gcard__media">
-            <img src="imgs/acom-doublequeen.jpg" alt="Categoria Double Queen" loading="lazy"/>
-          </div>
-          <div class="gcard__body">
-            <h3 class="gcard__name">Double Queen</h3>
-            <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
-          </div>
-        </article>
-      </div>
-      <div class="carousel-nav">
-        <button class="carousel-btn" data-track="acomTrack" data-dir="-1" aria-label="Categoria anterior">←</button>
-        <button class="carousel-btn" data-track="acomTrack" data-dir="1" aria-label="Próxima categoria">→</button>
+    <div class="splide acom-splide" id="acomSplide" aria-label="Categorias de acomodação" data-lenis-prevent>
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <article class="gcard">
+              <div class="gcard__media">
+                <img src="imgs/acom-frentemar.jpg" alt="Categoria Frente Mar" loading="lazy"/>
+              </div>
+              <div class="gcard__body">
+                <h3 class="gcard__name">Frente Mar</h3>
+                <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </article>
+          </li>
+          <li class="splide__slide">
+            <article class="gcard">
+              <div class="gcard__media">
+                <img src="imgs/acom-lateralmar.jpg" alt="Categoria Lateral Mar" loading="lazy"/>
+              </div>
+              <div class="gcard__body">
+                <h3 class="gcard__name">Lateral Mar</h3>
+                <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </article>
+          </li>
+          <li class="splide__slide">
+            <article class="gcard">
+              <div class="gcard__media">
+                <img src="imgs/acom-standard.jpg" alt="Categoria Standard" loading="lazy"/>
+              </div>
+              <div class="gcard__body">
+                <h3 class="gcard__name">Standard</h3>
+                <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </article>
+          </li>
+          <li class="splide__slide">
+            <article class="gcard">
+              <div class="gcard__media">
+                <img src="imgs/acom-superior.jpg" alt="Categoria Superior" loading="lazy"/>
+              </div>
+              <div class="gcard__body">
+                <h3 class="gcard__name">Superior</h3>
+                <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </article>
+          </li>
+          <li class="splide__slide">
+            <article class="gcard">
+              <div class="gcard__media">
+                <img src="imgs/acom-doublequeen.jpg" alt="Categoria Double Queen" loading="lazy"/>
+              </div>
+              <div class="gcard__body">
+                <h3 class="gcard__name">Double Queen</h3>
+                <a class="gcard__cta" href="https://reservas.saishotel.com.br" target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </article>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -298,6 +307,7 @@
 </main>
 
 <script src="js/vendor/lenis.min.js"></script>
+<script src="js/vendor/splide.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
